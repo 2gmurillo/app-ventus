@@ -1,0 +1,65 @@
+.gallery-item {
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  transform-origin: center left;
+  transition: 200ms;
+}
+.gallery__container:hover .gallery-item {
+  opacity: 0.25;
+}
+.gallery-item:hover ~ .gallery-item {
+  transform: translate3d(50px, 0, 0);
+}
+.gallery__container:hover .gallery-item:hover {
+  transform: scale(1.25);
+  opacity: 1;
+}
+.gallery-item__image {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+.gallery-item__details {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 200ms;
+  @include flex-col;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.gallery-item__details:hover {
+  opacity: 1;
+}
+.gallery-item__details a {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+.gallery-item__details .fas {
+  margin-right: 5px;
+}
+.gallery-item__details {
+  .fas:hover {
+    animation-name: parpadear;
+    animation-duration: 300ms;
+  }
+  .far:hover {
+    animation-name: parpadear;
+    animation-duration: 300ms;
+  }
+}

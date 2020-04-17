@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Thambi+2&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css');
+$theme-font: 'Baloo Thambi 2', cursive;
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+@mixin center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

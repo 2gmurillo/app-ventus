@@ -1,0 +1,22 @@
+.carousel {
+  margin-bottom: 20px;
+}
+.carousel__title {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.gallery {
+  width: 100%;
+  padding: 10px 0;
+  overflow-x: scroll;
+  position: relative;
+}
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+.gallery__container {
+  color: white;
+  margin: 20px 0;
+  padding: 10px 0;
+  white-space: nowrap;
+}

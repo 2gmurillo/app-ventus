@@ -1,0 +1,53 @@
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px 50px;
+  grid-template-areas:
+    'header__logo'
+    'header__menu';
+}
+.header__logo {
+  grid-area: header__logo;
+  @include center-row;
+}
+.header__logo--img {
+  height: 70%;
+}
+.header__logo--p {
+  font-size: 40px;
+  margin-left: 15px;
+}
+.header__menu {
+  grid-area: header__menu;
+  @include center-row;
+  cursor: pointer;
+}
+.header__menu--profile {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}
+.header__menu--list {
+  display: none;
+  list-style: none;
+  margin-left: 10px;
+}
+.header__menu:hover .header__menu--list,
+.header__menu--list:hover {
+  display: block;
+}
+.header__menu--list li a {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+.header__menu--list li:hover a {
+  text-decoration: underline;
+}
+.header__menu:hover .header__menu--profile .fas {
+  animation-name: parpadear;
+  animation-duration: 300ms;
+}
+.header__menu--profile .fas {
+  margin-right: 10px;
+}
