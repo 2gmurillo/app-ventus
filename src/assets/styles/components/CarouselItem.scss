@@ -50,8 +50,13 @@
   color: #f2f2f2;
   text-decoration: none;
 }
-.gallery-item__details .fas {
-  margin-right: 5px;
+.gallery-item__details {
+  .fas {
+    margin-right: 5px;
+  }
+  .far {
+    margin-right: 5px;
+  }
 }
 .gallery-item__details {
   .fas:hover {
@@ -62,4 +67,7 @@
     animation-name: parpadear;
     animation-duration: 300ms;
   }
+}
+.fas.fa-heart {
+  color: red;
 }

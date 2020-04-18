@@ -24,7 +24,9 @@
   cursor: pointer;
 }
 .header__menu--profile {
+  height: 100%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   font-size: 40px;
 }
@@ -35,11 +37,9 @@
 }
 .header__menu:hover .header__menu--list,
 .header__menu--list:hover {
-  display: block;
-}
-.header__menu--list li a {
-  color: #f2f2f2;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 .header__menu--list li:hover a {
   text-decoration: underline;
@@ -48,6 +48,12 @@
   animation-name: parpadear;
   animation-duration: 300ms;
 }
-.header__menu--profile .fas {
-  margin-right: 10px;
+.header__menu--profile {
+  .fas {
+    margin-right: 10px;
+  }
+  img {
+    height: 50px;
+    border-radius: 50%;
+  }
 }

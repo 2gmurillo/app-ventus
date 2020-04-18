@@ -1,0 +1,6 @@
+.notFound {
+  grid-area: main;
+  height: calc(100vh - 152px);
+  @include center-row;
+  text-align: center;
+}

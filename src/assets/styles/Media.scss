@@ -13,12 +13,6 @@
     top: 70px;
     right: 0;
   }
-  .header__menu:hover .header__menu--list,
-  .header__menu--list:hover {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
 }
 @media (min-width: 640px) {
   .header__logo--p::after {

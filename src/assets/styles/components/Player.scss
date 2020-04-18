@@ -1,0 +1,17 @@
+.player {
+  grid-area: main;
+  height: calc(100vh - 152px);
+  @include center-col;
+}
+.player {
+  h1 {
+    margin-bottom: 10px;
+  }
+  img {
+    width: 250px;
+    border-radius: 20px;
+  }
+  .button {
+    width: 200px;
+  }
+}
