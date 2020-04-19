@@ -11,11 +11,64 @@ const Player = (props) => {
     props.getPlayerSource(id);
   }, []);
 
+  var saque = [];
+  for (let index = 0; index < playing.saque; index++) {
+    saque.push(<span key={index} />);
+  }
+  var rece = [];
+  for (let index = 0; index < playing.rece; index++) {
+    rece.push(<span key={index} />);
+  }
+  var levante = [];
+  for (let index = 0; index < playing.levante; index++) {
+    levante.push(<span key={index} />);
+  }
+  var ataque = [];
+  for (let index = 0; index < playing.ataque; index++) {
+    ataque.push(<span key={index} />);
+  }
+  var bloque = [];
+  for (let index = 0; index < playing.bloque; index++) {
+    bloque.push(<span key={index} />);
+  }
+  var defensa = [];
+  for (let index = 0; index < playing.defensa; index++) {
+    defensa.push(<span key={index} />);
+  }
+
   return hasPlaying ? (
     <div className='player'>
       <h1 className='player__name'>{playing.name.toUpperCase()}</h1>
-      <div className='player__image'>
-        <img src={playing.cover} alt='' />
+      <div className='player__details'>
+        <div className='player__image'>
+          <img src={playing.cover} alt='' />
+        </div>
+        <div className='player__skills'>
+          <div id='saque' className='player__skills--attibute'>
+            <p>Saq</p>
+            {saque}
+          </div>
+          <div id='rece' className='player__skills--attibute'>
+            <p>Rec</p>
+            {rece}
+          </div>
+          <div id='levante' className='player__skills--attibute'>
+            <p>Lev</p>
+            {levante}
+          </div>
+          <div id='ataque' className='player__skills--attibute'>
+            <p>Ata</p>
+            {ataque}
+          </div>
+          <div id='bloque' className='player__skills--attibute'>
+            <p>Blo</p>
+            {bloque}
+          </div>
+          <div id='defensa' className='player__skills--attibute'>
+            <p>Def</p>
+            {defensa}
+          </div>
+        </div>
       </div>
       <button
         className='button'

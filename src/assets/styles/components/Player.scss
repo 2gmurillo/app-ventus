@@ -1,15 +1,57 @@
 .player {
   grid-area: main;
-  height: calc(100vh - 152px);
+  min-height: calc(100vh - 152px);
   @include center-col;
 }
 .player {
   h1 {
     margin-bottom: 10px;
   }
-  img {
-    width: 250px;
-    border-radius: 20px;
+  .player__details {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+      'player__image'
+      'player__skills';
+    .player__image {
+      grid-area: player__image;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      width: 280px;
+      height: 280px;
+      border-radius: 20px;
+      overflow: hidden;
+      @include center-col;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .player__skills {
+      grid-area: player__skills;
+      box-sizing: border-box;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      border-radius: 5px;
+      width: 280px;
+      height: 280px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      margin: 20px 0 10px;
+      .player__skills--attibute {
+        display: flex;
+        flex-direction: column-reverse;
+        span {
+          display: block;
+          background-color: #c2b280;
+          border-radius: 5px;
+          width: 35px;
+          height: 15px;
+          margin-bottom: 8px;
+        }
+      }
+    }
   }
   .button {
     width: 200px;

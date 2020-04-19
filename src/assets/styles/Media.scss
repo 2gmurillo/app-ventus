@@ -18,6 +18,18 @@
   .header__logo--p::after {
     content: 'voleyplaya';
   }
+  .player {
+    .player__details {
+      margin: 20px 0;
+      grid-template-rows: auto;
+      grid-template-columns: auto auto;
+      grid-template-areas: 'player__image player__skills';
+      .player__image,
+      .player__skills {
+        margin: auto 10px;
+      }
+    }
+  }
 }
 @media (min-width: 680px) {
   .footer {
