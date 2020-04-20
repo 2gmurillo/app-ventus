@@ -40,7 +40,9 @@ a {
     'main'
     'footer';
 }
-
+.home {
+  grid-area: main;
+}
 @import '../styles/components/Header.scss';
 @import '../styles/components/Search.scss';
 @import '../styles/components/Carousel.scss';

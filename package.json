@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:prod": "webpack --mode production",
-    "start:dev": "webpack-dev-server --open --mode development"
+    "start:dev": "nodemon src/server/index.js"
   },
   "keywords": [
     "ventus",
@@ -14,14 +14,23 @@
   "author": "Juango",
   "license": "ISC",
   "dependencies": {
+    "@babel/register": "^7.9.0",
+    "asset-require-hook": "^1.2.0",
     "classname": "0.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "history": "^4.10.1",
+    "ignore-styles": "^5.0.1",
     "md5": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "webpack": "^4.42.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -40,9 +49,12 @@
     "html-webpack-plugin": "^4.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
+    "nodemon": "^2.0.3",
+    "react-hot-loader": "^4.12.20",
     "sass-loader": "^8.0.2",
-    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }
