@@ -4,9 +4,9 @@
   "description": "Creado el 16 de abril del 2020",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env ENV=production webpack-cli --config webpack.config.js",
+    "build": "set NODE_ENV=production && cross-env ENV=production webpack-cli --config webpack.config.js",
     "start:prod": "cross-env ENV=production node src/server",
-    "start:dev": "nodemon src/server/index.js",
+    "start:dev": "set DEBUG=app:* && set NODE_ENV=development && nodemon src/server/index.js",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix"
   },
   "keywords": [
@@ -16,15 +16,25 @@
   "author": "Juango",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "@babel/register": "^7.9.0",
+    "@hapi/boom": "^7.4.11",
     "asset-require-hook": "^1.2.0",
+    "axios": "^0.19.2",
     "classname": "0.0.0",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "helmet": "^3.22.0",
     "history": "^4.10.1",
     "ignore-styles": "^5.0.1",
+    "lodash": "^4.17.15",
     "md5": "^2.2.1",
+    "passport": "^0.4.1",
+    "passport-http": "^0.3.0",
+    "passport-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -33,6 +43,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "webpack": "^4.42.1"
   },
   "devDependencies": {
