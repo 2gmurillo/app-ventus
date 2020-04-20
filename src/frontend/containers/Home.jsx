@@ -6,31 +6,53 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 
 const Home = ({ favorites, female, male, search }) => {
-  if (search.length > 0) {
-    var myFavorites = null,
-      femalePlayers = null,
-      malePlayers = null;
-  } else {
-    var myFavorites = favorites.length > 0 && (
+  let myFavorites,
+    femalePlayers,
+    malePlayers = null;
+
+  if (search.length <= 0) {
+    myFavorites = favorites.length > 0 && (
       <Carousel title='Favoritos'>
         {favorites.map((item) => (
-          <CarouselItem key={item.id} {...item} isList={true} />
+          <CarouselItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            position={item.position}
+            height={item.height}
+            cover={item.cover}
+            isList={true}
+          />
         ))}
       </Carousel>
     );
 
-    var femalePlayers = (
+    femalePlayers = (
       <Carousel title='Jugadoras Femeninas'>
         {female.map((item) => (
-          <CarouselItem key={item.id} {...item} isCategorized />
+          <CarouselItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            position={item.position}
+            height={item.height}
+            cover={item.cover}
+          />
         ))}
       </Carousel>
     );
 
-    var malePlayers = (
+    malePlayers = (
       <Carousel title='Jugadores Masculinos'>
         {male.map((item) => (
-          <CarouselItem key={item.id} {...item} isCategorized />
+          <CarouselItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            position={item.position}
+            height={item.height}
+            cover={item.cover}
+          />
         ))}
       </Carousel>
     );
@@ -43,7 +65,14 @@ const Home = ({ favorites, female, male, search }) => {
         {search.length > 0 && (
           <Carousel title='Búsqueda'>
             {search.map((item) => (
-              <CarouselItem key={item.id} {...item} />
+              <CarouselItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                position={item.position}
+                height={item.height}
+                cover={item.cover}
+              />
             ))}
           </Carousel>
         )}

@@ -11,27 +11,27 @@ const Player = (props) => {
     props.getPlayerSource(id);
   }, []);
 
-  var saque = [];
+  const saque = [];
   for (let index = 0; index < playing.saque; index++) {
     saque.push(<span key={index} />);
   }
-  var rece = [];
+  const rece = [];
   for (let index = 0; index < playing.rece; index++) {
     rece.push(<span key={index} />);
   }
-  var levante = [];
+  const levante = [];
   for (let index = 0; index < playing.levante; index++) {
     levante.push(<span key={index} />);
   }
-  var ataque = [];
+  const ataque = [];
   for (let index = 0; index < playing.ataque; index++) {
     ataque.push(<span key={index} />);
   }
-  var bloque = [];
+  const bloque = [];
   for (let index = 0; index < playing.bloque; index++) {
     bloque.push(<span key={index} />);
   }
-  var defensa = [];
+  const defensa = [];
   for (let index = 0; index < playing.defensa; index++) {
     defensa.push(<span key={index} />);
   }

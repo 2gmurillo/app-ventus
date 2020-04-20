@@ -19,7 +19,7 @@ const CarouselItem = (props) => {
       height,
     });
   };
-  const isFavorite = favorites.find((item) => item.id == id);
+  const isFavorite = favorites.find((item) => item.id === id);
   let heart;
   if (isFavorite) {
     heart = 'fas';
@@ -32,19 +32,25 @@ const CarouselItem = (props) => {
       <div className='gallery-item__details'>
         <div>
           <Link to={`/player/${id}`}>
-            <i className='fas fa-eye'></i>
+            <i className='fas fa-eye' />
           </Link>
           {isList ? (
             <i
+              role='button'
+              aria-label='Delete'
+              tabIndex={0}
               className='fas fa-trash-alt'
               onClick={() => handleDeleteFavorite(id)}
-            ></i>
+            />
           ) : (
             <i
               id={id}
+              role='button'
+              aria-label='Add'
+              tabIndex={0}
               className={`${heart} fa-heart`}
               onClick={handleSetFavorite}
-            ></i>
+            />
           )}
         </div>
         <p className='gallery-item__details--title'>{name}</p>

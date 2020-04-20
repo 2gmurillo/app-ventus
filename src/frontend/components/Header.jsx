@@ -23,7 +23,7 @@ const Header = (props) => {
           {hasUser ? (
             <img className='fas' src={gravatar(user.email)} alt={user.email} />
           ) : (
-            <i className='fas fa-volleyball-ball'></i>
+            <i className='fas fa-volleyball-ball' />
           )}
           <p>Perfil</p>
         </div>
