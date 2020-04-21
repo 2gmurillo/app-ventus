@@ -6,31 +6,45 @@ import axios from 'axios';
 import passport from 'passport';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { renderRoutes } from 'react-router-config';
-import { StaticRouter } from 'react-router-dom';
-import serverRoutes from '../frontend/routes/serverRoutes';
-import reducer from '../frontend/reducers';
-import initialState from '../frontend/initialState';
-import getManifest from './getManifest';
-import Layout from '../frontend/components/Layout';
-const { config } = require('./config/index');
+import main from './routes/main';
 
 dotenv.config();
 
-const { ENV, PORT } = process.env;
+const ENV = process.env.NODE_ENV;
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// body parser
 app.use(express.json());
-app.use(helmet());
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(`${__dirname}/public`));
 
-//  Basic strategy
+// Basic strategy
 require('./utils/auth/strategies/basic');
+
+if (ENV === 'development') {
+  console.log('Loading dev config');
+  const webpackConfig = require('../../webpack.config');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const compiler = webpack(webpackConfig);
+  const serverConfig = {
+    contentBase: `http://localhost${PORT}`,
+    port: PORT,
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
+    historyApiFallback: true,
+    stats: { colors: true },
+  };
+  app.use(webpackDevMiddleware(compiler, serverConfig));
+  app.use(webpackHotMiddleware(compiler));
+} else {
+  console.log(`Loading ${ENV} config`);
+  app.use(helmet());
+  app.use(helmet.permittedCrossDomainPolicies());
+  app.disable('x-powered-by');
+}
 
 app.post('/auth/sign-in', async function (req, res, next) {
   passport.authenticate('basic', function (error, data) {
@@ -64,7 +78,7 @@ app.post('/auth/sign-up', async function (req, res, next) {
 
   try {
     await axios({
-      url: `${config.apiUrl}/api/auth/sign-up`,
+      url: `${process.env.API_URL}/api/auth/sign-up`,
       method: 'post',
       data: user,
     });
@@ -83,7 +97,7 @@ app.post('/user-players', async function (req, res, next) {
     const { token } = req.cookies;
 
     const { data, status } = await axios({
-      url: `${config.apiUrl}/api/user-players`,
+      url: `${process.env.API_URL}/api/user-players`,
       headers: { Authorization: `Bearer ${token}` },
       method: 'post',
       data: userPlayer,
@@ -105,7 +119,7 @@ app.delete('/user-players/:userPlayerId', async function (req, res, next) {
     const { token } = req.cookies;
 
     const { data, status } = await axios({
-      url: `${config.apiUrl}/api/user-players/${userPlayerId}`,
+      url: `${process.env.API_URL}/api/user-players/${userPlayerId}`,
       headers: { Authorization: `Bearer ${token}` },
       method: 'delete',
     });
@@ -120,73 +134,8 @@ app.delete('/user-players/:userPlayerId', async function (req, res, next) {
   }
 });
 
-if (ENV === 'development') {
-  console.log('Development config');
-  const webpackConfig = require('../../webpack.config');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  const webpackHotMiddleware = require('webpack-hot-middleware');
-  const compiler = webpack(webpackConfig);
-  const serverConfig = { port: PORT, hot: true };
+app.get('*', main);
 
-  app.use(webpackDevMiddleware(compiler, serverConfig));
-  app.use(webpackHotMiddleware(compiler));
-} else {
-  app.use((req, res, next) => {
-    if (!req.hashManifest) req.hashManifest = getManifest();
-    next();
-  });
-  app.use(express.static(`${__dirname}/public`));
-  app.use(helmet());
-  app.use(helmet.permittedCrossDomainPolicies());
-  app.disable('x-powered-by');
-}
-
-const setResponse = (html, preloadedState, manifest) => {
-  const mainStyles = manifest ? manifest['main.css'] : 'assets/app.css';
-  const mainBuild = manifest ? manifest['main.js'] : 'assets/app.js';
-  const vendorBuild = manifest ? manifest['vendors.js'] : 'assets/vendor.js';
-
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="${mainStyles}" type="text/css" />
-      <title>Ventus</title>
-    </head>
-    <body>
-      <div id="app">${html}</div>
-      <script>
-        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(
-          /</g,
-          '\\u003c'
-        )}
-      </script>
-      <script src="${mainBuild}" type="text/javascript"></script>
-      <script src="${vendorBuild}" type="text/javascript"></script>
-    </body>
-  </html>
-  `;
-};
-
-const renderApp = (req, res) => {
-  const store = createStore(reducer, initialState);
-  const preloadedState = store.getState();
-  const html = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={{}}>
-        <Layout>{renderRoutes(serverRoutes)}</Layout>
-      </StaticRouter>
-    </Provider>
-  );
-
-  res.send(setResponse(html, preloadedState, req.hashManifest));
-};
-
-app.get('*', renderApp);
-
-app.listen(PORT, (err) => {
-  if (err) console.log(err);
-  else console.log(`Listening http://localhost:${PORT}`);
+app.listen(PORT, function () {
+  console.log(`Listening http://localhost:${PORT}`);
 });
