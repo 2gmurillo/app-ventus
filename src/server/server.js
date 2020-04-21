@@ -7,14 +7,17 @@ import passport from 'passport';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
 import main from './routes/main';
+import config from './config/index';
 
 dotenv.config();
 
 const ENV = process.env.NODE_ENV;
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
+// Body parser
 app.use(express.json());
+
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,7 +49,14 @@ if (ENV === 'development') {
   app.disable('x-powered-by');
 }
 
+// Agregamos las variables de timpo en segundos
+const THIRTY_DAYS_IN_SEC = 2592000;
+const TWO_HOURS_IN_SEC = 7200;
+
 app.post('/auth/sign-in', async function (req, res, next) {
+  // Obtenemos el atributo rememberMe desde el cuerpo del request
+  const { rememberMe } = req.body;
+
   passport.authenticate('basic', function (error, data) {
     try {
       if (error || !data) {
@@ -63,6 +73,7 @@ app.post('/auth/sign-in', async function (req, res, next) {
         res.cookie('token', token, {
           httpOnly: !config.dev,
           secure: !config.dev,
+          maxAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC,
         });
 
         res.status(200).json(user);

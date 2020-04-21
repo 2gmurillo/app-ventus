@@ -1,4 +1,5 @@
 import getManifest from '../getManifest';
+import icon from '../../frontend/assets/static/ventus.png';
 
 let files = false;
 if (process.env.NODE_ENV !== 'development') files = getManifest();
@@ -10,6 +11,7 @@ const render = (html, preloadedState) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href=${icon} />
         <link rel="stylesheet" href="${
           files ? files['main.css'] : 'assets/app.css'
         }" type="text/css"></link>
