@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Header snapshot 1`] = `
+<header
+  className="header"
+>
+  <a
+    className="header__logo"
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="logoVentus"
+      className="header__logo--img"
+      src="test-file-stub"
+    />
+    <p
+      className="header__logo--p"
+    >
+      @ventus
+    </p>
+  </a>
+  <div
+    className="header__menu"
+  >
+    <div
+      className="header__menu--profile"
+    >
+      <i
+        className="fas fa-volleyball-ball"
+      />
+      <p>
+        Perfil
+      </p>
+    </div>
+    <ul
+      className="header__menu--list"
+    >
+      <li>
+        <a
+          className="link"
+          href="/login"
+          onClick={[Function]}
+        >
+          Iniciar sesión
+        </a>
+      </li>
+      <li>
+        <a
+          className="link"
+          href="/register"
+          onClick={[Function]}
+        >
+          Registrarse
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+`;

@@ -9,7 +9,7 @@ import logoVentus from '../assets/static/logoVentus.png';
 
 const Header = (props) => {
   const { user } = props;
-  const hasUser = Object.keys(user.id).length > 0;
+  const hasUser = Object.keys(user).length > 0;
   const handleLogout = () => {
     document.cookie = 'email=""';
     document.cookie = 'name=""';
