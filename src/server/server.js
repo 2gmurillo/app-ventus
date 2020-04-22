@@ -7,7 +7,6 @@ import passport from 'passport';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
 import main from './routes/main';
-import config from './config/index';
 
 dotenv.config();
 

@@ -5,11 +5,12 @@ import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Player from '../containers/Player';
 import NotFound from '../containers/NotFound';
+import ScoreApp from '../containers/ScoreApp';
 import Layout from '../components/Layout';
 
 import '../assets/styles/App.scss';
 
-const App = () => (
+const App = ({ isLogged }) => (
   <BrowserRouter>
     <Layout>
       <Switch>
@@ -17,6 +18,11 @@ const App = () => (
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/player/:id' component={Player} />
+        <Route
+          exact
+          path='/score-app'
+          component={isLogged ? ScoreApp : Register}
+        />
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -4,20 +4,39 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { StaticRouter } from 'react-router';
 import { renderRoutes } from 'react-router-config';
-import Routes from '../../frontend/routes/serverRoutes';
+import serverRoutes from '../../frontend/routes/serverRoutes';
 import Layout from '../../frontend/components/Layout';
 import reducer from '../../frontend/reducers';
-import initialState from '../../frontend/initialState';
 import render from '../render';
+import estadoInicial from '../../frontend/initialState';
 
 const main = (req, res, next) => {
   try {
-    // const isLogged = initialState.user.id;
+    let initialState;
+    const { email, name, id } = req.cookies;
+
+    if (id) {
+      initialState = {
+        user: {
+          email,
+          name,
+          id,
+        },
+        playing: {},
+        favorites: [],
+        search: [],
+        female: [],
+        male: [],
+      };
+    } else {
+      initialState = estadoInicial;
+    }
+    const isLogged = initialState.user.id;
     const store = createStore(reducer, initialState);
     const html = renderToString(
       <Provider store={store}>
         <StaticRouter location={req.url} context={{}}>
-          <Layout>{renderRoutes(Routes)}</Layout>
+          <Layout>{renderRoutes(serverRoutes(isLogged))}</Layout>
         </StaticRouter>
       </Provider>
     );
