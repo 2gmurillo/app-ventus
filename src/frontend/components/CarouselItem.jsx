@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { setFavorite, deleteFavorite } from '../actions/index';
 
 const CarouselItem = (props) => {
@@ -68,7 +67,7 @@ CarouselItem.propTypes = {
   name: PropTypes.string,
   position: PropTypes.string,
   height: PropTypes.number,
-  deteleFavorite: PropTypes.func,
+  deleteFavorite: PropTypes.func,
   setFavorite: PropTypes.func,
 };
 

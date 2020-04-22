@@ -55,14 +55,20 @@ const Login = (props) => {
         </form>
         <section className='login__container--social-media'>
           <div>
-            <i className='fab fa-google' /> Inicia sesión con Google
+            <i className='fab fa-google' />
+            {' '}
+            Inicia sesión con Google
           </div>
           <div>
-            <i className='fab fa-facebook' /> Inicia sesión con Facebook
+            <i className='fab fa-facebook' />
+            {' '}
+            Inicia sesión con Facebook
           </div>
         </section>
         <p className='login__container--register'>
-          No tienes ninguna cuenta, <Link to='/register'>Regístrate</Link>
+          No tienes ninguna cuenta,
+          {' '}
+          <Link to='/register'>Regístrate</Link>
         </p>
       </section>
     </section>

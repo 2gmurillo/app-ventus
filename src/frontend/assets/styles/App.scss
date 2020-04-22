@@ -42,6 +42,7 @@ a {
 }
 .home {
   grid-area: main;
+  min-height: calc(100vh - 152px);
 }
 @import '../styles/components/Header.scss';
 @import '../styles/components/Search.scss';

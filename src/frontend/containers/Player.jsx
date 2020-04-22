@@ -95,7 +95,7 @@ const mapDispatchToProps = {
 };
 
 Player.propTypes = {
-  getVideoSource: PropTypes.func,
+  getPlayerSource: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

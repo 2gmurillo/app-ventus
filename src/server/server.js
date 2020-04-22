@@ -18,6 +18,7 @@ import reducer from '../frontend/reducers';
 import Layout from '../frontend/components/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
+import stateDefault from '../frontend/initialState';
 
 import icon from '../frontend/assets/static/ventus.png';
 
@@ -74,8 +75,9 @@ const setResponse = (html, preloadedState, manifest) => {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link rel="shortcut icon" href=${icon} />
-      <link rel="stylesheet" href="${mainStyles}" type="text/css"/>
+      <link rel="stylesheet" href="${mainStyles}" type="text/css" />
       <title>Ventus</title>
     </head>
     <body>
@@ -110,14 +112,7 @@ const renderApp = (req, res) => {
       male: [],
     };
   } else {
-    initialState = {
-      user: {},
-      playing: {},
-      favorites: [],
-      search: [],
-      female: [],
-      male: [],
-    };
+    initialState = stateDefault;
   }
 
   const store = createStore(reducer, initialState);
@@ -133,14 +128,7 @@ const renderApp = (req, res) => {
   res.send(setResponse(html, preloadedState, req.hashManifest));
 };
 
-// Agregamos las variables de timpo en segundos
-const THIRTY_DAYS_IN_SEC = 2592000;
-const TWO_HOURS_IN_SEC = 7200;
-
 app.post('/auth/sign-in', async function (req, res, next) {
-  // Obtenemos el atributo rememberMe desde el cuerpo del request
-  const { rememberMe } = req.body;
-
   passport.authenticate('basic', function (error, data) {
     try {
       if (error || !data) {
@@ -157,7 +145,6 @@ app.post('/auth/sign-in', async function (req, res, next) {
         res.cookie('token', token, {
           httpOnly: !(ENV === 'development'),
           secure: !(ENV === 'development'),
-          maxAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC,
         });
 
         res.status(200).json(user);
@@ -181,7 +168,6 @@ app.post('/auth/sign-up', async function (req, res, next) {
         password: user.password,
       },
     });
-
     res.status(201).json({
       name: req.body.name,
       email: req.body.email,

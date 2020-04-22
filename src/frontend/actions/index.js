@@ -48,7 +48,7 @@ export const registerUser = (payload, redirectUrl) => {
       .then(() => {
         window.location.href = redirectUrl;
       })
-      .catch((err) => dispatch(setError(err)));
+      .catch((error) => dispatch(setError(error)));
   };
 };
 
@@ -67,6 +67,7 @@ export const loginUser = ({ email, password }, redirectUrl) => {
         document.cookie = `name=${data.user.name}`;
         document.cookie = `id=${data.user.id}`;
         document.cookie = `token=${data.user.token}`;
+        console.log(data);
         dispatch(loginRequest(data.user));
       })
       .then(() => {
