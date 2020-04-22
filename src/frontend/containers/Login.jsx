@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginRequest } from '../actions/index';
+import { loginUser } from '../actions/index';
 
 const Login = (props) => {
   const [form, setValues] = useState({
     email: '',
+    id: '',
+    name: '',
   });
 
   const handleInput = (e) => {
@@ -17,8 +19,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.loginRequest(form);
-    props.history.push('/');
+    props.loginUser(form, '/');
   };
 
   return (
@@ -53,20 +54,14 @@ const Login = (props) => {
         </form>
         <section className='login__container--social-media'>
           <div>
-            <i className='fab fa-google' />
-            {' '}
-            Inicia sesión con Google
+            <i className='fab fa-google' /> Inicia sesión con Google
           </div>
           <div>
-            <i className='fab fa-facebook' />
-            {' '}
-            Inicia sesión con Facebook
+            <i className='fab fa-facebook' /> Inicia sesión con Facebook
           </div>
         </section>
         <p className='login__container--register'>
-          No tienes ninguna cuenta,
-          {' '}
-          <Link to='/register'>Regístrate</Link>
+          No tienes ninguna cuenta, <Link to='/register'>Regístrate</Link>
         </p>
       </section>
     </section>
@@ -74,7 +69,11 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
+
+// Login.propTypes = {
+//   loginUser: PropTypes.func,
+// };
 
 export default connect(null, mapDispatchToProps)(Login);
