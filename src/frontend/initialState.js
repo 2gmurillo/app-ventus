@@ -1,8 +1,8 @@
 const initialState = {
   user: {},
   playing: {},
-  favorites: [],
   search: [],
+  favorites: [],
   female: [
     {
       id: 1,

@@ -94,24 +94,34 @@ const setResponse = (html, preloadedState, manifest) => {
   `;
 };
 
-const renderApp = (req, res) => {
+const renderApp = async (req, res) => {
   let initialState;
-  const { email, name, id } = req.cookies;
+  const { token, email, name, id } = req.cookies;
 
-  if (id) {
+  try {
+    let playerList = await axios({
+      url: `${process.env.API_URL}/api/players`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'get',
+    });
+    playerList = playerList.data.data;
     initialState = {
       user: {
+        id,
         email,
         name,
-        id,
       },
       playing: {},
-      favorites: [],
       search: [],
-      female: [],
-      male: [],
+      favorites: [],
+      female: playerList.filter(
+        (player) => player.tags[1] === 'Femenino' && player._id
+      ),
+      male: playerList.filter(
+        (player) => player.tags[1] === 'Masculino' && player._id
+      ),
     };
-  } else {
+  } catch (err) {
     initialState = stateDefault;
   }
 
