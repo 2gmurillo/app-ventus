@@ -20,11 +20,6 @@ export const logoutRequest = (payload) => ({
   payload,
 });
 
-export const setError = (payload) => ({
-  type: 'SET_ERROR',
-  payload,
-});
-
 export const registerRequest = (payload) => ({
   type: 'REGISTER_REQUEST',
   payload,
@@ -37,6 +32,11 @@ export const searchRequest = (payload) => ({
 
 export const getPlayerSource = (payload) => ({
   type: 'GET_PLAYER_SOURCE',
+  payload,
+});
+
+export const setError = (payload) => ({
+  type: 'SET_ERROR',
   payload,
 });
 

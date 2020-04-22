@@ -6,6 +6,7 @@ import { registerUser } from '../actions/index';
 const Register = (props) => {
   const [form, setValues] = useState({
     email: '',
+    id: '',
     name: '',
     password: '',
   });
@@ -64,5 +65,9 @@ const Register = (props) => {
 const mapDispatchToProps = {
   registerUser,
 };
+
+// Register.propTypes = {
+//   registerUser: PropTypes.func,
+// };
 
 export default connect(null, mapDispatchToProps)(Register);
