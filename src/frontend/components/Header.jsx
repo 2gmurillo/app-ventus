@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import className from 'classname';
 import { Link } from 'react-router-dom';
 import { logoutRequest } from '../actions/index';
 import gravatar from '../utils/gravatar';
@@ -9,12 +8,8 @@ import gravatar from '../utils/gravatar';
 import logoVentus from '../assets/static/logoVentus.png';
 
 const Header = (props) => {
-  const { user, isLogin, isRegister } = props;
+  const { user } = props;
   const hasUser = Object.keys(user).length > 0;
-  const HeaderClass = className('header', {
-    isLogin,
-    isRegister,
-  });
   const handleLogout = () => {
     document.cookie = 'email=""';
     document.cookie = 'name=""';
@@ -24,7 +19,7 @@ const Header = (props) => {
     window.location.href = '/';
   };
   return (
-    <header className={HeaderClass}>
+    <header className='header'>
       <Link to='/' className='header__logo'>
         <img className='header__logo--img' src={logoVentus} alt='logoVentus' />
         <p className='header__logo--p'>@ventus</p>
@@ -82,8 +77,6 @@ const mapDispatchToProps = {
 
 Header.propTypes = {
   user: PropTypes.object,
-  isLogin: PropTypes.bool,
-  isRegister: PropTypes.bool,
   logoutRequest: PropTypes.func,
 };
 
