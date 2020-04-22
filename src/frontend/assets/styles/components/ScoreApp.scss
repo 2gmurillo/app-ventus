@@ -1,0 +1,6 @@
+.score-app {
+  grid-area: main;
+  min-height: calc(100vh - 152px);
+  @include center-row;
+  text-align: center;
+}

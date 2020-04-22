@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import className from 'classname';
 import { searchRequest } from '../actions/index';
 
@@ -30,6 +31,11 @@ const Search = ({ isHome, searchRequest }) => {
 
 const mapDispatchToProps = {
   searchRequest,
+};
+
+Search.propTypes = {
+  isHome: PropTypes.bool,
+  searchRequest: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(Search);

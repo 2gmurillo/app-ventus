@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../actions/index';
@@ -72,8 +73,8 @@ const mapDispatchToProps = {
   loginUser,
 };
 
-// Login.propTypes = {
-//   loginUser: PropTypes.func,
-// };
+Login.propTypes = {
+  loginUser: PropTypes.func,
+};
 
 export default connect(null, mapDispatchToProps)(Login);

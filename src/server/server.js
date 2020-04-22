@@ -1,18 +1,30 @@
+/* eslint-disable func-names */
+/* eslint-disable global-require */
 import express from 'express';
 import dotenv from 'dotenv';
-import webpack from 'webpack';
 import helmet from 'helmet';
-import axios from 'axios';
-import passport from 'passport';
-import boom from '@hapi/boom';
+import webpack from 'webpack';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import cookieParser from 'cookie-parser';
-import main from './routes/main';
+import boom from '@hapi/boom';
+import passport from 'passport';
+import axios from 'axios';
+import reducer from '../frontend/reducers';
+import Layout from '../frontend/components/Layout';
+import serverRoutes from '../frontend/routes/serverRoutes';
+import getManifest from './getManifest';
+
+import icon from '../frontend/assets/static/ventus.png';
 
 dotenv.config();
 
-const ENV = process.env.NODE_ENV;
 const app = express();
-const PORT = process.env.PORT || 8000;
+const { ENV, PORT } = process.env;
 
 // Body parser
 app.use(express.json());
@@ -43,10 +55,83 @@ if (ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 } else {
   console.log(`Loading ${ENV} config`);
+  app.use((req, res, next) => {
+    req.hashManifest = getManifest();
+    next();
+  });
   app.use(helmet());
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
 }
+
+const setResponse = (html, preloadedState, manifest) => {
+  const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
+  const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
+  const vendorBuild = manifest ? manifest['vendors.js'] : 'assets/vendor.js';
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href=${icon} />
+      <link rel="stylesheet" href="${mainStyles}" type="text/css"/>
+      <title>Ventus</title>
+    </head>
+    <body>
+      <div id="app">${html}</div>
+      <script id="preloadedState">
+            window.__PRELOADED_STATE__ = ${JSON.stringify(
+              preloadedState
+            ).replace(/</g, '\\u003c')}
+          </script>
+          <script src="${mainBuild}" type="text/javascript"></script>
+          <script src="${vendorBuild}" type="text/javascript"></script>
+    </body>
+  </html>
+  `;
+};
+
+const renderApp = (req, res) => {
+  let initialState;
+  const { email, name, id } = req.cookies;
+
+  if (id) {
+    initialState = {
+      user: {
+        email,
+        name,
+        id,
+      },
+      playing: {},
+      favorites: [],
+      search: [],
+      female: [],
+      male: [],
+    };
+  } else {
+    initialState = {
+      user: {},
+      playing: {},
+      favorites: [],
+      search: [],
+      female: [],
+      male: [],
+    };
+  }
+
+  const store = createStore(reducer, initialState);
+  const preloadedState = store.getState();
+  const isLogged = initialState.user.id;
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={{}}>
+        <Layout>{renderRoutes(serverRoutes(isLogged))}</Layout>
+      </StaticRouter>
+    </Provider>
+  );
+  res.send(setResponse(html, preloadedState, req.hashManifest));
+};
 
 // Agregamos las variables de timpo en segundos
 const THIRTY_DAYS_IN_SEC = 2592000;
@@ -152,7 +237,7 @@ app.delete('/user-players/:userPlayerId', async function (req, res, next) {
   }
 });
 
-app.get('*', main);
+app.get('*', renderApp);
 
 app.listen(PORT, function () {
   console.log(`Listening http://localhost:${PORT}`);

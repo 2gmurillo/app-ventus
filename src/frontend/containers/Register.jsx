@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../actions/index';
@@ -66,8 +67,8 @@ const mapDispatchToProps = {
   registerUser,
 };
 
-// Register.propTypes = {
-//   registerUser: PropTypes.func,
-// };
+Register.propTypes = {
+  registerUser: PropTypes.func,
+};
 
 export default connect(null, mapDispatchToProps)(Register);

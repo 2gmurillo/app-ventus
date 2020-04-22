@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPlayerSource } from '../actions/index';
 import NotFound from './NotFound';
@@ -91,6 +92,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getPlayerSource,
+};
+
+Player.propTypes = {
+  getVideoSource: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
