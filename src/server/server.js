@@ -117,7 +117,7 @@ const renderApp = async (req, res) => {
       user,
       playing: {},
       search: [],
-      favorites: userPlayers.filter((player) => player._id === id),
+      favorites: [],
       female: playerList.filter(
         (player) => player.tags[1] === 'Femenino' && player._id
       ),
