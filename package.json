@@ -4,14 +4,17 @@
   "description": "Creado el 16 de abril del 2020",
   "main": "index.js",
   "scripts": {
-    "dev": "set DEBUG=app:* && set ENV=development && nodemon src/server/index.js",
-    "start": "cross-env ENV=production && node src/server/index.js",
+    "start:dev": "cross-env DEBUG=app:* && cross-env ENV=development && nodemon src/server/index.js",
+    "start": "node src/server/index.js",
     "postinstall": "npm run build",
-    "build": "cross-env ENV=production webpack-cli --config webpack.config.js",
+    "build": "webpack-cli --config webpack.config.js --colors",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
+  },
+  "engies": {
+    "node": "12.16.x"
   },
   "keywords": [
     "ventus",
@@ -19,9 +22,6 @@
   ],
   "author": "Juango",
   "license": "ISC",
-  "engies": {
-    "node": "12.16.x"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@babel/register": "^7.9.0",
