@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start:dev": "cross-env DEBUG=app:* && cross-env ENV=development && nodemon src/server/index.js",
+    "start:dev": "cross-env DEBUG=app:* && nodemon src/server/index.js",
     "start": "node src/server/index.js",
     "build": "webpack-cli --config webpack.config.js --colors",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix",

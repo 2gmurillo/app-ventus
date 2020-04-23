@@ -104,13 +104,7 @@ const renderApp = async (req, res) => {
       headers: { Authorization: `Bearer ${token}` },
       method: 'get',
     });
-    // let userPlayers = await axios({
-    //   url: `${process.env.API_URL}/api/players?userId=${id}`,
-    //   headers: { Authorization: `Bearer ${token}` },
-    //   method: 'get',
-    // });
     playerList = playerList.data.data;
-    // userPlayers = userPlayers.data.data;
     let user = {};
     if (email || name || id) {
       user = {
