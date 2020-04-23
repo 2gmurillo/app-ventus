@@ -2,6 +2,9 @@
   "name": "ventus-front",
   "version": "2.0.0",
   "description": "Creado el 16 de abril del 2020",
+  "engines": {
+    "node": "12.16.x"
+  },
   "main": "index.js",
   "scripts": {
     "start:dev": "cross-env DEBUG=app:* && cross-env ENV=development && nodemon src/server/index.js",
