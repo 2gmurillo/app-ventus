@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env ENV=production webpack-cli --config webpack.config.js",
-    "start:prod": "cross-env ENV=production node src/server",
+    "start:prod": "cross-env ENV=production node src/server/index.js",
     "start:dev": "set DEBUG=app:* &&  set ENV=development && nodemon src/server/index.js",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix",
     "test": "jest",

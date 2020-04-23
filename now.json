@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [{ "src": "src/server/index.js", "use": "@now/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/src/server/index.js" }],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "8000",
+    "API_URL": "@ventus-api-url",
+    "API_KEY_TOKEN": "@ventus-api-key-token"
+  }
+}
