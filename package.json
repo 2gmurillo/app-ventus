@@ -3,8 +3,7 @@
   "version": "2.0.0",
   "description": "Creado el 16 de abril del 2020",
   "engines": {
-    "node": "12.16.2",
-    "npm": "6.14.4"
+    "node": "12.16.2"
   },
   "main": "index.js",
   "scripts": {
