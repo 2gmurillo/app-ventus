@@ -4,9 +4,9 @@
   "description": "Creado el 16 de abril del 2020",
   "main": "index.js",
   "scripts": {
-    "build": "set NODE_ENV=production && cross-env ENV=production webpack-cli --config webpack.config.js",
-    "start:prod": "set NODE_ENV=production && cross-env ENV=production node src/server",
-    "start:dev": "set DEBUG=app:* && set NODE_ENV=development &&  set ENV=development && nodemon src/server/index.js",
+    "build": "cross-env ENV=production webpack-cli --config webpack.config.js",
+    "start:prod": "cross-env ENV=production node src/server",
+    "start:dev": "set DEBUG=app:* &&  set ENV=development && nodemon src/server/index.js",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix",
     "test": "jest",
     "test:watch": "jest --watch",
