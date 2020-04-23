@@ -7,9 +7,9 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 require('dotenv').config();
-const { ENV } = process.env;
+const { NODE_ENV } = process.env;
 
-const isDev = ENV === 'development';
+const isDev = NODE_ENV === 'development';
 const entry = ['./src/frontend/index.js'];
 
 if (isDev) {
@@ -20,7 +20,7 @@ if (isDev) {
 
 module.exports = {
   entry,
-  mode: ENV,
+  mode: NODE_ENV,
   output: {
     path: path.resolve(__dirname, 'src/server/public'),
     filename: isDev ? 'assets/app.js' : 'assets/app-[hash].js',
