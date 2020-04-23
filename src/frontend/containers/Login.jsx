@@ -34,6 +34,7 @@ const Login = (props) => {
             type='email'
             placeholder='Correo'
             onChange={handleInput}
+            required
           />
           <input
             name='password'
@@ -41,6 +42,7 @@ const Login = (props) => {
             type='password'
             placeholder='Contraseña'
             onChange={handleInput}
+            required
           />
           <button type='submit' className='button'>
             Iniciar sesión
