@@ -4,9 +4,10 @@
   "description": "Creado el 16 de abril del 2020",
   "main": "index.js",
   "scripts": {
+    "dev": "set DEBUG=app:* &&  set ENV=development && nodemon src/server/index.js",
+    "start": "cross-env ENV=production node src/server/index.js",
+    "postinstall": "npm run build",
     "build": "cross-env ENV=production webpack-cli --config webpack.config.js",
-    "start:prod": "cross-env ENV=production node src/server/index.js",
-    "start:dev": "set DEBUG=app:* &&  set ENV=development && nodemon src/server/index.js",
     "lint": "eslint src/frontend/ --ext .js --ext .jsx --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -19,7 +20,7 @@
   "author": "Juango",
   "license": "ISC",
   "engies": {
-    "node": "12.16.2"
+    "node": "12.16.x"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
