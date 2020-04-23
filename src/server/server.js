@@ -25,7 +25,7 @@ import icon from '../frontend/assets/static/ventus.png';
 dotenv.config();
 
 const app = express();
-const { ENV, PORT } = process.env;
+const { NODE_ENV, PORT } = process.env;
 
 // Body parser
 app.use(express.json());
@@ -38,7 +38,7 @@ app.use(express.static(`${__dirname}/public`));
 // Basic strategy
 require('./utils/auth/strategies/basic');
 
-if (ENV === 'development') {
+if (NODE_ENV === 'development') {
   console.log('Loading dev config');
   const webpackConfig = require('../../webpack.config');
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -55,7 +55,7 @@ if (ENV === 'development') {
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
 } else {
-  console.log(`Loading ${ENV} config`);
+  console.log(`Loading ${NODE_ENV} config`);
   app.use((req, res, next) => {
     req.hashManifest = getManifest();
     next();
@@ -163,8 +163,8 @@ app.post('/auth/sign-in', async function (req, res, next) {
         const { token, ...user } = data;
 
         res.cookie('token', token, {
-          httpOnly: !(ENV === 'development'),
-          secure: !(ENV === 'development'),
+          httpOnly: !(NODE_ENV === 'development'),
+          secure: !(NODE_ENV === 'development'),
         });
 
         res.status(200).json(user);
