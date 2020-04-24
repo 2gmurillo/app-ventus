@@ -36,8 +36,8 @@ const Header = (props) => {
         {hasUser ? (
           <ul className='header__menu--list'>
             <li>
-              <Link className='link' to='/score-app'>
-                Score-app
+              <Link className='link' to='/create-player'>
+                C-Player
               </Link>
             </li>
             <li>

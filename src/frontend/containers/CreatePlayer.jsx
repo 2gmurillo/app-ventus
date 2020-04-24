@@ -25,6 +25,15 @@ const CreatePlayer = (props) => {
     });
   };
 
+  const handleTags = (e, i) => {
+    console.log(e.target.value);
+    console.log(i);
+    console.log(form);
+    const { tags } = form;
+    tags[i] = e.target.value;
+    setValues({ ...form, tags });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     props.createPlayerAction(form, '/');
@@ -118,10 +127,18 @@ const CreatePlayer = (props) => {
           />
           <input
             className='input'
-            name='tags'
+            name='category'
+            type='text'
+            placeholder='Categoría'
+            onChange={(event) => handleTags(event, 1)}
+            required
+          />
+          <input
+            className='input'
+            name='sexo'
             type='text'
             placeholder='Sexo'
-            onChange={handleInput}
+            onChange={(event) => handleTags(event, 0)}
             required
           />
           <button type='submit' className='button'>

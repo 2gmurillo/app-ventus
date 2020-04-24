@@ -7,7 +7,7 @@ import { loginUser } from '../actions/index';
 const Login = (props) => {
   const [form, setValues] = useState({
     email: '',
-    id: '',
+    // id: '',
     name: '',
   });
 
