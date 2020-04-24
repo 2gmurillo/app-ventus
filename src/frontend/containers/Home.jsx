@@ -31,8 +31,8 @@ const Home = ({ favorites, female, male, search }) => {
       <Carousel title='Jugadoras Femeninas'>
         {female.map((item) => (
           <CarouselItem
-            key={item.id}
-            id={item.id}
+            key={item._id}
+            id={item._id}
             name={item.name}
             position={item.position}
             height={item.height}
@@ -46,8 +46,8 @@ const Home = ({ favorites, female, male, search }) => {
       <Carousel title='Jugadores Masculinos'>
         {male.map((item) => (
           <CarouselItem
-            key={item.id}
-            id={item.id}
+            key={item._id}
+            id={item._id}
             name={item.name}
             position={item.position}
             height={item.height}
@@ -66,8 +66,8 @@ const Home = ({ favorites, female, male, search }) => {
           <Carousel title='Búsqueda'>
             {search.map((item) => (
               <CarouselItem
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                id={item._id}
                 name={item.name}
                 position={item.position}
                 height={item.height}

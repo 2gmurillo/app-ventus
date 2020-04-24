@@ -38,8 +38,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         playing:
-          state.female.find((item) => item.id === Number(action.payload)) ||
-          state.male.find((item) => item.id === Number(action.payload)) ||
+          state.female.find((item) => item._id === action.payload) ||
+          state.male.find((item) => item._id === action.payload) ||
           [],
       };
 

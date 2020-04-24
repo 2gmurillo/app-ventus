@@ -5,6 +5,7 @@ import { createPlayerAction } from '../actions/index';
 
 const CreatePlayer = (props) => {
   const [form, setValues] = useState({
+    id: '',
     name: '',
     position: '',
     height: '',

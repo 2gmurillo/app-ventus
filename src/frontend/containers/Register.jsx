@@ -7,7 +7,7 @@ import { registerUser } from '../actions/index';
 const Register = (props) => {
   const [form, setValues] = useState({
     email: '',
-    // id: '',
+    id: '',
     name: '',
     password: '',
   });
