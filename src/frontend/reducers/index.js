@@ -8,6 +8,7 @@ const reducer = (state, action) => {
           ...state,
           favorites: [...state.favorites, action.payload],
         };
+
     case 'DELETE_FAVORITE':
       return {
         ...state,
@@ -32,6 +33,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case 'CREATE_USER_REQUEST':
+      return {
+        ...state,
+        female: [...state.female, action.payload],
       };
 
     case 'GET_PLAYER_SOURCE':

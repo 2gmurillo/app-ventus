@@ -5,18 +5,17 @@ import { createPlayerAction } from '../actions/index';
 
 const CreatePlayer = (props) => {
   const [form, setValues] = useState({
-    id: '',
+    cover: '',
     name: '',
     position: '',
     height: '',
-    cover: '',
     saque: '',
     rece: '',
     levante: '',
     ataque: '',
     bloque: '',
     defensa: '',
-    tags: '',
+    tags: [],
   });
 
   const handleInput = (e) => {
@@ -38,6 +37,14 @@ const CreatePlayer = (props) => {
         <form className='createPlayer__container--form' onSubmit={handleSubmit}>
           <input
             className='input'
+            name='cover'
+            type='text'
+            placeholder='Imagen'
+            onChange={handleInput}
+            required
+          />
+          <input
+            className='input'
             name='name'
             type='text'
             placeholder='Nombre'
@@ -54,25 +61,10 @@ const CreatePlayer = (props) => {
           />
           <input
             className='input'
-            name='position'
-            type='text'
-            placeholder='Posición'
-            onChange={handleInput}
-            required
-          />
-          <input
-            className='input'
-            name='heught'
+            name='height'
             type='number'
+            step='any'
             placeholder='Estatura'
-            onChange={handleInput}
-            required
-          />
-          <input
-            className='input'
-            name='cover'
-            type='text'
-            placeholder='Imagen'
             onChange={handleInput}
             required
           />

@@ -192,24 +192,25 @@ app.post('/auth/sign-up', async function (req, res, next) {
   }
 });
 
-// app.get('/players', async function (req, res, next) {});
+// app.get('/api/players', async function (req, res, next) {});
 
 app.post('/players', async function (req, res, next) {
   try {
-    const { body: player } = req;
-    const { token } = req.cookies;
+    const { player } = req.body;
+    // const { token } = req.cookies;
+    console.log(player);
 
-    const { data, status } = await axios({
-      url: `${process.env.API_URL}/api/players`,
-      headers: { Authorization: `Bearer ${token}` },
-      method: 'post',
-      data: player,
-    });
+    // const { data, status } = await axios({
+    //   url: `${process.env.API_URL}/api/players`,
+    //   headers: { Authorization: `Bearer ${token}` },
+    //   method: 'post',
+    //   data: player,
+    // });
 
-    if (status !== 201) {
-      return next(boom.badImplementation());
-    }
-    res.status(201).json(data);
+    // if (status !== 201) {
+    //   return next(boom.badImplementation());
+    // }
+    // res.status(201).json(data);
   } catch (error) {
     next(error);
   }
@@ -236,7 +237,7 @@ app.post('/players', async function (req, res, next) {
 //   }
 // });
 
-app.get('/', renderApp);
+app.get('*', renderApp);
 
 app.listen(PORT, function () {
   console.log(`Listening http://localhost:${PORT}`);

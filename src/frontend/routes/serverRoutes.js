@@ -39,7 +39,7 @@ const serverRoutes = (isLogged) => {
       component: Player,
     },
     {
-      name: 'ScoreApp',
+      name: 'NotFound',
       component: NotFound,
     },
   ];
