@@ -193,7 +193,6 @@ app.post('/auth/sign-up', async function (req, res, next) {
 });
 
 // app.get('/players', async function (req, res, next) {});
-app.get('*', async function (req, res, next) {});
 
 app.post('/players', async function (req, res, next) {
   try {
@@ -237,7 +236,7 @@ app.post('/players', async function (req, res, next) {
 //   }
 // });
 
-app.get('*', renderApp);
+app.get('/', renderApp);
 
 app.listen(PORT, function () {
   console.log(`Listening http://localhost:${PORT}`);
