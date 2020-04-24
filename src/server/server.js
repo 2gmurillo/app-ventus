@@ -192,50 +192,50 @@ app.post('/auth/sign-up', async function (req, res, next) {
   }
 });
 
-app.get('/players', async function (req, res, next) {});
+// app.get('/players', async function (req, res, next) {});
 
-app.post('/user-players', async function (req, res, next) {
-  try {
-    const { body: userPlayer } = req;
-    const { token } = req.cookies;
+// app.post('/user-players', async function (req, res, next) {
+//   try {
+//     const { body: userPlayer } = req;
+//     const { token } = req.cookies;
 
-    const { data, status } = await axios({
-      url: `${process.env.API_URL}/api/user-players`,
-      headers: { Authorization: `Bearer ${token}` },
-      method: 'post',
-      data: userPlayer,
-    });
+//     const { data, status } = await axios({
+//       url: `${process.env.API_URL}/api/user-players`,
+//       headers: { Authorization: `Bearer ${token}` },
+//       method: 'post',
+//       data: userPlayer,
+//     });
 
-    if (status !== 201) {
-      return next(boom.badImplementation());
-    }
+//     if (status !== 201) {
+//       return next(boom.badImplementation());
+//     }
 
-    res.status(201).json(data);
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.status(201).json(data);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
-app.delete('/user-players/:userPlayerId', async function (req, res, next) {
-  try {
-    const { userPlayerId } = req.params;
-    const { token } = req.cookies;
+// app.delete('/user-players/:userPlayerId', async function (req, res, next) {
+//   try {
+//     const { userPlayerId } = req.params;
+//     const { token } = req.cookies;
 
-    const { data, status } = await axios({
-      url: `${process.env.API_URL}/api/user-players/${userPlayerId}`,
-      headers: { Authorization: `Bearer ${token}` },
-      method: 'delete',
-    });
+//     const { data, status } = await axios({
+//       url: `${process.env.API_URL}/api/user-players/${userPlayerId}`,
+//       headers: { Authorization: `Bearer ${token}` },
+//       method: 'delete',
+//     });
 
-    if (status !== 200) {
-      return next(boom.badImplementation());
-    }
+//     if (status !== 200) {
+//       return next(boom.badImplementation());
+//     }
 
-    res.status(200).json(data);
-  } catch (error) {
-    next(error);
-  }
-});
+//     res.status(200).json(data);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 app.get('*', renderApp);
 

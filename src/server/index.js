@@ -7,9 +7,8 @@ require('@babel/register')({
 });
 
 require('asset-require-hook')({
-  extensions: ['jpg', 'png', 'gif', 'woff'],
+  extensions: ['jpg', 'png', 'gif'],
   name: '/assets/[hash].[ext]',
-  mimetype: 'application/font-woff',
   limit: 10000,
 });
 

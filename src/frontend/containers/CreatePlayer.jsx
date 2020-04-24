@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import {useState} from 'react'
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { createPlayer } from '../actions/index';
 
 const CreatePlayer = (props) => {
-  const [form, setValues] = useState({
-    name: '',
-    position: '',
-    height: '',
-    cover: '',
-    saque: '',
-    rece: '',
-    levante: '',
-    ataque: '',
-    bloque: '',
-    defensa: '',
-    categoria: '',
-    sexo: '',
-  });
+  // const [form, setValues] = useState({
+  // });
 
   const handleInput = (e) => {
-    console.log(e.target);
-    setValues({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    // setValues({
+    //   ...form,
+    //   [e.target.name]: e.target.value,
+    // });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // props.createPlayer(form, '/');
   };
 
