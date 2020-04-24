@@ -119,10 +119,10 @@ const renderApp = async (req, res) => {
       search: [],
       favorites: [],
       female: playerList.filter(
-        (player) => player.tags[1] === 'Femenino' && player._id
+        (player) => player.tags[0] === 'Femenino' && player._id
       ),
       male: playerList.filter(
-        (player) => player.tags[1] === 'Masculino' && player._id
+        (player) => player.tags[0] === 'Masculino' && player._id
       ),
     };
   } catch (err) {
@@ -194,35 +194,34 @@ app.post('/auth/sign-up', async function (req, res, next) {
 
 // app.get('/players', async function (req, res, next) {});
 
-// app.post('/user-players', async function (req, res, next) {
+app.post('/players', async function (req, res, next) {
+  try {
+    const { body: player } = req;
+    const { token } = req.cookies;
+
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/players`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'post',
+      data: player,
+    });
+
+    if (status !== 201) {
+      return next(boom.badImplementation());
+    }
+    res.status(201).json(data);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// app.delete('/players/:playerId', async function (req, res, next) {
 //   try {
-//     const { body: userPlayer } = req;
+//     const { playerId } = req.params;
 //     const { token } = req.cookies;
 
 //     const { data, status } = await axios({
-//       url: `${process.env.API_URL}/api/user-players`,
-//       headers: { Authorization: `Bearer ${token}` },
-//       method: 'post',
-//       data: userPlayer,
-//     });
-
-//     if (status !== 201) {
-//       return next(boom.badImplementation());
-//     }
-
-//     res.status(201).json(data);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-// app.delete('/user-players/:userPlayerId', async function (req, res, next) {
-//   try {
-//     const { userPlayerId } = req.params;
-//     const { token } = req.cookies;
-
-//     const { data, status } = await axios({
-//       url: `${process.env.API_URL}/api/user-players/${userPlayerId}`,
+//       url: `${process.env.API_URL}/api/players/${playerId}`,
 //       headers: { Authorization: `Bearer ${token}` },
 //       method: 'delete',
 //     });

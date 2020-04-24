@@ -1,23 +1,33 @@
-import React from 'react';
-// import {useState} from 'react'
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { createPlayer } from '../actions/index';
+import { createPlayerAction } from '../actions/index';
 
 const CreatePlayer = (props) => {
-  // const [form, setValues] = useState({
-  // });
+  const [form, setValues] = useState({
+    name: '',
+    position: '',
+    height: '',
+    cover: '',
+    saque: '',
+    rece: '',
+    levante: '',
+    ataque: '',
+    bloque: '',
+    defensa: '',
+    tags: '',
+  });
 
   const handleInput = (e) => {
-    // setValues({
-    //   ...form,
-    //   [e.target.name]: e.target.value,
-    // });
+    setValues({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // props.createPlayer(form, '/');
+    e.preventDefault();
+    props.createPlayerAction(form, '/');
   };
 
   return (
@@ -115,15 +125,7 @@ const CreatePlayer = (props) => {
           />
           <input
             className='input'
-            name='categoria'
-            type='text'
-            placeholder='Categoría'
-            onChange={handleInput}
-            required
-          />
-          <input
-            className='input'
-            name='sexo'
+            name='tags'
             type='text'
             placeholder='Sexo'
             onChange={handleInput}
@@ -139,11 +141,11 @@ const CreatePlayer = (props) => {
 };
 
 const mapDispatchToProps = {
-  // createPlayer,
+  createPlayerAction,
 };
 
 CreatePlayer.propTypes = {
-  // createPlayer: PropTypes.func,
+  createPlayerAction: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(CreatePlayer);

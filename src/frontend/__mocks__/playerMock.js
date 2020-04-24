@@ -1,16 +1,15 @@
 const playerMock = {
-  id: 1,
   name: 'Sammy Fontalvo',
   position: 'Defensa',
   height: 1.61,
-  cover: 'http://dummyimage.com/800x600.png/001f3f/ffffff',
+  cover: 'http://dummyimage.com/800x600.png/F08080/ffffff',
   saque: 8,
   rece: 5,
   levante: 8,
   ataque: 10,
   bloque: 5,
   defensa: 10,
-  tags: ['Élite', 'Femenino'],
+  tags: ['Femenino', 'Élite'],
 };
 
 module.exports = playerMock;

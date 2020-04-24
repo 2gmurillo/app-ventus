@@ -25,6 +25,11 @@ export const registerRequest = (payload) => ({
   payload,
 });
 
+export const createUserRequest = (payload) => ({
+  type: 'CREATE_USER_REQUEST',
+  payload,
+});
+
 export const searchRequest = (payload) => ({
   type: 'SEARCH_REQUEST',
   payload,
@@ -72,6 +77,18 @@ export const loginUser = ({ email, password }, redirectUrl) => {
         window.location.href = redirectUrl;
       })
       .catch((err) => dispatch(setError(err)));
+  };
+};
+
+export const createPlayerAction = (payload, redirectUrl) => {
+  return (dispatch) => {
+    axios
+      .post('/players', payload)
+      .then(({ data }) => dispatch(createUserRequest(data)))
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
+      .catch((error) => dispatch(setError(error)));
   };
 };
 
