@@ -4,6 +4,7 @@ import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 import ScoreApp from '../containers/ScoreApp';
 import Player from '../containers/Player';
+import CreatePlayer from '../containers/CreatePlayer';
 
 const serverRoutes = (isLogged) => {
   return [
@@ -11,6 +12,11 @@ const serverRoutes = (isLogged) => {
       exact: true,
       path: '/score-app',
       component: isLogged ? ScoreApp : Login,
+    },
+    {
+      exact: true,
+      path: '/create-player',
+      component: isLogged ? CreatePlayer : Login,
     },
     {
       exact: true,

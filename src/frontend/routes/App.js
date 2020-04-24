@@ -7,6 +7,7 @@ import Player from '../containers/Player';
 import NotFound from '../containers/NotFound';
 import ScoreApp from '../containers/ScoreApp';
 import Layout from '../components/Layout';
+import CreatePlayer from '../containers/CreatePlayer';
 
 import '../assets/styles/App.scss';
 
@@ -22,6 +23,11 @@ const App = ({ isLogged }) => (
           exact
           path='/score-app'
           component={isLogged ? ScoreApp : Register}
+        />
+        <Route
+          exact
+          path='/create-player'
+          component={isLogged ? CreatePlayer : Register}
         />
         <Route component={NotFound} />
       </Switch>
