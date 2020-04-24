@@ -16,7 +16,7 @@ const serverRoutes = (isLogged) => {
     {
       exact: true,
       path: '/create-player',
-      component: isLogged ? CreatePlayer : Login,
+      component: CreatePlayer,
     },
     {
       exact: true,
