@@ -193,6 +193,7 @@ app.post('/auth/sign-up', async function (req, res, next) {
 });
 
 // app.get('/players', async function (req, res, next) {});
+app.get('*', async function (req, res, next) {});
 
 app.post('/players', async function (req, res, next) {
   try {
