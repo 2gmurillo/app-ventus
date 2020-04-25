@@ -18,20 +18,14 @@ const CreatePlayer = (props) => {
     tags: [],
   });
 
-  const handleInput = (e) => {
+  const handleInput = (e, i) => {
+    // const { tags } = form;
+    // tags[i] = e.target.value;
     setValues({
       ...form,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleTags = (e, i) => {
-    console.log(e.target.value);
-    console.log(i);
     console.log(form);
-    const { tags } = form;
-    tags[i] = e.target.value;
-    setValues({ ...form, tags });
   };
 
   const handleSubmit = (e) => {
@@ -49,7 +43,7 @@ const CreatePlayer = (props) => {
             name='cover'
             type='text'
             placeholder='Imagen'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -57,7 +51,7 @@ const CreatePlayer = (props) => {
             name='name'
             type='text'
             placeholder='Nombre'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -65,7 +59,7 @@ const CreatePlayer = (props) => {
             name='position'
             type='text'
             placeholder='Posición'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -74,7 +68,7 @@ const CreatePlayer = (props) => {
             type='number'
             step='any'
             placeholder='Estatura'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -82,7 +76,7 @@ const CreatePlayer = (props) => {
             name='saque'
             type='number'
             placeholder='Saque'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -90,7 +84,7 @@ const CreatePlayer = (props) => {
             name='rece'
             type='number'
             placeholder='Rece'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -98,7 +92,7 @@ const CreatePlayer = (props) => {
             name='levante'
             type='number'
             placeholder='Levante'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -106,7 +100,7 @@ const CreatePlayer = (props) => {
             name='ataque'
             type='number'
             placeholder='Ataque'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -114,7 +108,7 @@ const CreatePlayer = (props) => {
             name='bloque'
             type='number'
             placeholder='Bloque'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -122,7 +116,7 @@ const CreatePlayer = (props) => {
             name='defensa'
             type='number'
             placeholder='Defensa'
-            onChange={handleInput}
+            onChange={(event) => handleInput(event)}
             required
           />
           <input
@@ -130,7 +124,7 @@ const CreatePlayer = (props) => {
             name='category'
             type='text'
             placeholder='Categoría'
-            onChange={(event) => handleTags(event, 1)}
+            onChange={(event) => handleInput(event, 1)}
             required
           />
           <input
@@ -138,7 +132,7 @@ const CreatePlayer = (props) => {
             name='sexo'
             type='text'
             placeholder='Sexo'
-            onChange={(event) => handleTags(event, 0)}
+            onChange={(event) => handleInput(event, 0)}
             required
           />
           <button type='submit' className='button'>

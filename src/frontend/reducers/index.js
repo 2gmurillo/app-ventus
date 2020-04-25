@@ -37,8 +37,7 @@ const reducer = (state, action) => {
 
     case 'CREATE_USER_REQUEST':
       return {
-        ...state,
-        female: [...state.female, action.payload],
+        sate,
       };
 
     case 'GET_PLAYER_SOURCE':
