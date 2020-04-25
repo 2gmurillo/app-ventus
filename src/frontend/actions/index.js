@@ -25,8 +25,8 @@ export const registerRequest = (payload) => ({
   payload,
 });
 
-export const createUserRequest = (payload) => ({
-  type: 'CREATE_USER_REQUEST',
+export const createPlayerRequest = (payload) => ({
+  type: 'CREATE_PLAYER_REQUEST',
   payload,
 });
 
@@ -81,10 +81,12 @@ export const loginUser = ({ email, password }, redirectUrl) => {
 };
 
 export const createPlayerAction = (payload, redirectUrl) => {
+  console.log(payload);
+  console.log(redirectUrl);
   return (dispatch) => {
     axios
       .post('/players', payload)
-      .then(({ data }) => dispatch(createUserRequest(data)))
+      .then(({ data }) => dispatch(createPlayerRequest(data)))
       .then(() => {
         window.location.href = redirectUrl;
       })

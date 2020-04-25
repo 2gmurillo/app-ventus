@@ -15,20 +15,27 @@ const CreatePlayer = (props) => {
     ataque: '',
     bloque: '',
     defensa: '',
-    tags: [],
+    // tags: [],
   });
 
-  const handleInput = (e, i) => {
-    // const { tags } = form;
-    // tags[i] = e.target.value;
+  const handleInput = (e) => {
     setValues({
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
   };
 
+  // const handleTags = (e, i) => {
+  //   console.log(e.target.value);
+  //   console.log(i);
+  //   console.log(form);
+  //   const { tags } = form;
+  //   tags[i] = e.target.value;
+  //   setValues({ ...form, tags });
+  // };
+
   const handleSubmit = (e) => {
+    console.log(form);
     e.preventDefault();
     props.createPlayerAction(form, '/');
   };
@@ -43,7 +50,7 @@ const CreatePlayer = (props) => {
             name='cover'
             type='text'
             placeholder='Imagen'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -51,7 +58,7 @@ const CreatePlayer = (props) => {
             name='name'
             type='text'
             placeholder='Nombre'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -59,7 +66,7 @@ const CreatePlayer = (props) => {
             name='position'
             type='text'
             placeholder='Posición'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -68,7 +75,7 @@ const CreatePlayer = (props) => {
             type='number'
             step='any'
             placeholder='Estatura'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -76,7 +83,7 @@ const CreatePlayer = (props) => {
             name='saque'
             type='number'
             placeholder='Saque'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -84,7 +91,7 @@ const CreatePlayer = (props) => {
             name='rece'
             type='number'
             placeholder='Rece'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -92,7 +99,7 @@ const CreatePlayer = (props) => {
             name='levante'
             type='number'
             placeholder='Levante'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -100,7 +107,7 @@ const CreatePlayer = (props) => {
             name='ataque'
             type='number'
             placeholder='Ataque'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -108,7 +115,7 @@ const CreatePlayer = (props) => {
             name='bloque'
             type='number'
             placeholder='Bloque'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
           <input
@@ -116,15 +123,15 @@ const CreatePlayer = (props) => {
             name='defensa'
             type='number'
             placeholder='Defensa'
-            onChange={(event) => handleInput(event)}
+            onChange={handleInput}
             required
           />
-          <input
+          {/* <input
             className='input'
             name='category'
             type='text'
             placeholder='Categoría'
-            onChange={(event) => handleInput(event, 1)}
+            onChange={(event) => handleTags(event, 1)}
             required
           />
           <input
@@ -132,9 +139,9 @@ const CreatePlayer = (props) => {
             name='sexo'
             type='text'
             placeholder='Sexo'
-            onChange={(event) => handleInput(event, 0)}
+            onChange={(event) => handleTags(event, 0)}
             required
-          />
+          /> */}
           <button type='submit' className='button'>
             Create
           </button>

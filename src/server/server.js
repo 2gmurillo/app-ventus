@@ -196,7 +196,7 @@ app.post('/auth/sign-up', async function (req, res, next) {
 
 app.post('/players', async function (req, res, next) {
   try {
-    const { player } = req.body;
+    const { body: player } = req;
     // const { token } = req.cookies;
     console.log(player);
 
