@@ -8,14 +8,14 @@ const CreatePlayer = (props) => {
     cover: '',
     name: '',
     position: '',
-    height: '',
-    saque: '',
-    rece: '',
-    levante: '',
-    ataque: '',
-    bloque: '',
-    defensa: '',
-    // tags: [],
+    height: 0,
+    saque: 0,
+    rece: 0,
+    levante: 0,
+    ataque: 0,
+    bloque: 0,
+    defensa: 0,
+    tags: [],
   });
 
   const handleInput = (e) => {
@@ -25,17 +25,13 @@ const CreatePlayer = (props) => {
     });
   };
 
-  // const handleTags = (e, i) => {
-  //   console.log(e.target.value);
-  //   console.log(i);
-  //   console.log(form);
-  //   const { tags } = form;
-  //   tags[i] = e.target.value;
-  //   setValues({ ...form, tags });
-  // };
+  const handleTags = (e, i) => {
+    const { tags } = form;
+    tags[i] = e.target.value;
+    setValues({ ...form, tags });
+  };
 
   const handleSubmit = (e) => {
-    console.log(form);
     e.preventDefault();
     props.createPlayerAction(form, '/');
   };
@@ -126,7 +122,7 @@ const CreatePlayer = (props) => {
             onChange={handleInput}
             required
           />
-          {/* <input
+          <input
             className='input'
             name='category'
             type='text'
@@ -141,7 +137,7 @@ const CreatePlayer = (props) => {
             placeholder='Sexo'
             onChange={(event) => handleTags(event, 0)}
             required
-          /> */}
+          />
           <button type='submit' className='button'>
             Create
           </button>
@@ -154,6 +150,39 @@ const CreatePlayer = (props) => {
 const mapDispatchToProps = {
   createPlayerAction,
 };
+
+// CreatePlayer.propTypes = {
+//   form: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       cover: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       position: PropTypes.string.isRequired,
+//       height: PropTypes.number.isRequired,
+//       saque: PropTypes.number.isRequired,
+//       rece: PropTypes.number.isRequired,
+//       levante: PropTypes.number.isRequired,
+//       ataque: PropTypes.number.isRequired,
+//       bloque: PropTypes.number.isRequired,
+//       defensa: PropTypes.number.isRequired,
+//       tags: PropTypes.array.isRequired,
+//     }).isRequired).isRequired,
+//     createPlayerAction: PropTypes.func,
+// };
+
+// CreatePlayer.propTypes = {
+//   cover: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   position: PropTypes.string.isRequired,
+//   height: PropTypes.number.isRequired,
+//   saque: PropTypes.number.isRequired,
+//   rece: PropTypes.number.isRequired,
+//   levante: PropTypes.number.isRequired,
+//   ataque: PropTypes.number.isRequired,
+//   bloque: PropTypes.number.isRequired,
+//   defensa: PropTypes.number.isRequired,
+//   tags: PropTypes.array.isRequired,
+//   createPlayerAction: PropTypes.func,
+// };
 
 CreatePlayer.propTypes = {
   createPlayerAction: PropTypes.func,

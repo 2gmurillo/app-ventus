@@ -81,8 +81,6 @@ export const loginUser = ({ email, password }, redirectUrl) => {
 };
 
 export const createPlayerAction = (payload, redirectUrl) => {
-  console.log(payload);
-  console.log(redirectUrl);
   return (dispatch) => {
     axios
       .post('/players', payload)
