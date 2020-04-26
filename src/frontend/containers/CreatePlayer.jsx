@@ -81,14 +81,14 @@ const CreatePlayer = (props) => {
           />
           <Field
             className='input'
-            name='category'
+            name='tags[1]'
             type='text'
             placeholder='Categoría'
             value={values.tags[1]}
           />
           <Field
             className='input'
-            name='sexo'
+            name='tags[0]'
             type='text'
             placeholder='Sexo'
             value={values.tags[0]}
@@ -115,7 +115,7 @@ export default withFormik({
       ataque: 0,
       bloque: 0,
       defensa: 0,
-      tags: [],
+      tags: ['', ''],
     };
   },
   // handleTags(e, i) {
