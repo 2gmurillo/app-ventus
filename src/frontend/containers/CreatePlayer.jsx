@@ -1,7 +1,6 @@
 import React from 'react';
-import { withFormik, Field, Form } from 'formik';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withFormik, Field, Form } from 'formik';
 import { createPlayerAction } from '../actions/index';
 
 const CreatePlayer = (props) => {
@@ -122,7 +121,7 @@ const conFormik = withFormik({
     };
   },
   handleSubmit(values, formikBag) {
-    console.log(values);
+    formikBag.props.createPlayerAction(values, '/');
     formikBag.isSubmitting(false);
   },
 })(CreatePlayer);
@@ -130,9 +129,5 @@ const conFormik = withFormik({
 const mapDispatchToProps = {
   createPlayerAction,
 };
-
-// CreatePlayer.propTypes = {
-//   createPlayerAction: PropTypes.func,
-// };
 
 export default connect(null, mapDispatchToProps)(conFormik);

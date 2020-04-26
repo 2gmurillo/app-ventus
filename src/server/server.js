@@ -197,20 +197,18 @@ app.post('/auth/sign-up', async function (req, res, next) {
 app.post('/players', async function (req, res, next) {
   try {
     const { body: player } = req;
-    // const { token } = req.cookies;
-    console.log(player);
+    const { token } = req.cookies;
+    const { data, status } = await axios({
+      url: `${process.env.API_URL}/api/players`,
+      headers: { Authorization: `Bearer ${token}` },
+      method: 'post',
+      data: player,
+    });
 
-    // const { data, status } = await axios({
-    //   url: `${process.env.API_URL}/api/players`,
-    //   headers: { Authorization: `Bearer ${token}` },
-    //   method: 'post',
-    //   data: player,
-    // });
-
-    // if (status !== 201) {
-    //   return next(boom.badImplementation());
-    // }
-    // res.status(201).json(data);
+    if (status !== 201) {
+      return next(boom.badImplementation());
+    }
+    res.status(201).json(data);
   } catch (error) {
     next(error);
   }
