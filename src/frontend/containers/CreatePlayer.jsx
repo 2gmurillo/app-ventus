@@ -1,5 +1,8 @@
 import React from 'react';
 import { withFormik, Field, Form } from 'formik';
+// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createPlayerAction } from '../actions/index';
 
 const CreatePlayer = (props) => {
   const { isSubmitting, values } = props;
@@ -102,7 +105,7 @@ const CreatePlayer = (props) => {
   );
 };
 
-export default withFormik({
+const conFormik = withFormik({
   mapPropsToValues(props) {
     return {
       cover: '',
@@ -118,13 +121,18 @@ export default withFormik({
       tags: ['', ''],
     };
   },
-  // handleTags(e, i) {
-  //   const { tags } = form;
-  //   tags[i] = e.target.value;
-  //   setValues({ ...form, tags });
-  // },
   handleSubmit(values, formikBag) {
     console.log(values);
     formikBag.isSubmitting(false);
   },
 })(CreatePlayer);
+
+const mapDispatchToProps = {
+  createPlayerAction,
+};
+
+// CreatePlayer.propTypes = {
+//   createPlayerAction: PropTypes.func,
+// };
+
+export default connect(null, mapDispatchToProps)(conFormik);
