@@ -36,6 +36,7 @@ const CreatePlayer = (props) => {
             className='input'
             name='height'
             type='number'
+            placeholder='Estatura'
             step='any'
             required
           />
@@ -110,13 +111,13 @@ const conFormik = withFormik({
       cover: '',
       name: '',
       position: '',
-      height: 0,
-      saque: 0,
-      rece: 0,
-      levante: 0,
-      ataque: 0,
-      bloque: 0,
-      defensa: 0,
+      height: '',
+      saque: '',
+      rece: '',
+      levante: '',
+      ataque: '',
+      bloque: '',
+      defensa: '',
       tags: ['', ''],
     };
   },
