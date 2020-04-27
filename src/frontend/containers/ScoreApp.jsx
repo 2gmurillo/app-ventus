@@ -1,9 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const ScoreApp = () => (
-  <div className='score-app'>
-    <h1>SCORE APP COMING SOON</h1>
-  </div>
-);
+const ScoreApp = () => {
+  return (
+    <div className='score-app'>
+      <h1>SCORE APP COMING SOON</h1>
+      <Link className='back' to='/'>
+        Regresa
+      </Link>
+    </div>
+  );
+};
 
-export default ScoreApp;
+export default connect(null, null)(ScoreApp);

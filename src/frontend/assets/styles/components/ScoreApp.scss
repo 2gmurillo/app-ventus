@@ -1,6 +1,16 @@
 .score-app {
   grid-area: main;
   min-height: calc(100vh - 152px);
-  @include center-row;
+  @include center-col;
   text-align: center;
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
