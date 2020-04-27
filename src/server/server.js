@@ -13,7 +13,9 @@ import { createStore } from 'redux';
 import cookieParser from 'cookie-parser';
 import boom from '@hapi/boom';
 import passport from 'passport';
-import axios from 'axios';
+// import axios from 'axios';
+const axios = require('axios').default;
+const path = require('path');
 import reducer from '../frontend/reducers';
 import Layout from '../frontend/components/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
@@ -32,7 +34,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(`${__dirname}/public`)));
 
 // Basic strategy
 require('./utils/auth/strategies/basic');
@@ -44,12 +46,12 @@ if (NODE_ENV === 'development') {
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(webpackConfig);
   const serverConfig = {
-    // contentBase: `http://localhost${PORT}`,
+    contentBase: `http://localhost${PORT}`,
     port: PORT,
-    // publicPath: webpackConfig.output.publicPath,
+    publicPath: webpackConfig.output.publicPath,
     hot: true,
-    // historyApiFallback: true,
-    // stats: { colors: true },
+    historyApiFallback: true,
+    stats: { colors: true },
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
