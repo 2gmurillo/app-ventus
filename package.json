@@ -9,10 +9,7 @@
   "scripts": {
     "build": "webpack-cli --config webpack.config.js --colors",
     "lint": "eslint src/frontend --fix",
-    "start:dev": "nodemon src/server/index",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "start:dev": "nodemon src/server/index"
   },
   "keywords": [
     "ventus",
@@ -81,15 +78,5 @@
     "style-loader": "^0.23.1",
     "url-loader": "^4.1.0",
     "webpack-manifest-plugin": "^2.2.0"
-  },
-  "jest": {
-    "verbose": true,
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/frontend/__test__/setupTest.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(jp|jpeg|png|gif)$": "<rootDir>/src/frontend/__mocks__/fileMock.js",
-      "\\.(scss|css|sass)$": "<rootDir>/src/frontend/__mocks__/styleMock.js"
-    }
   }
 }
