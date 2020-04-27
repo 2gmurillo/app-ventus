@@ -11,7 +11,7 @@ const serverRoutes = (isLogged) => {
     {
       exact: true,
       path: '/score-app',
-      component: isLogged ? ScoreApp : Login,
+      component: ScoreApp,
     },
     {
       exact: true,

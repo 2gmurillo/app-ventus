@@ -19,11 +19,7 @@ const App = ({ isLogged }) => (
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/player/:id' component={Player} />
-        <Route
-          exact
-          path='/score-app'
-          component={isLogged ? ScoreApp : Login}
-        />
+        <Route exact path='/score-app' component={ScoreApp} />
         <Route
           exact
           path='/create-player'

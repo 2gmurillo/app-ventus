@@ -70,7 +70,7 @@ const Login = (props) => {
         <p className='login__container--register'>
           No tienes ninguna cuenta,
           {' '}
-          <Link to='/register'>Regístrate</Link>
+          <Link to='/'>Regresa</Link>
         </p>
       </section>
     </section>
