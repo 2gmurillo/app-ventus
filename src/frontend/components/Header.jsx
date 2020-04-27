@@ -54,8 +54,8 @@ const Header = (props) => {
               </Link>
             </li>
             <li>
-              <Link className='link' to='/register'>
-                Registrarse
+              <Link className='link' to='/score-app'>
+                Score-app
               </Link>
             </li>
           </ul>

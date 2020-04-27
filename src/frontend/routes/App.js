@@ -22,12 +22,12 @@ const App = ({ isLogged }) => (
         <Route
           exact
           path='/score-app'
-          component={isLogged ? ScoreApp : Register}
+          component={isLogged ? ScoreApp : Login}
         />
         <Route
           exact
           path='/create-player'
-          component={isLogged ? CreatePlayer : Register}
+          component={isLogged ? CreatePlayer : Login}
         />
         <Route component={NotFound} />
       </Switch>
