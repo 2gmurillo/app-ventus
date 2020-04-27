@@ -14,27 +14,189 @@ const Player = (props) => {
 
   const saque = [];
   for (let index = 0; index < playing.saque; index++) {
-    saque.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.saque) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'platino';
+        break;
+    }
+    saque.push(<span key={index} className={spanColor} />);
   }
   const rece = [];
   for (let index = 0; index < playing.rece; index++) {
-    rece.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.rece) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'ventus';
+        break;
+    }
+    rece.push(<span key={index} className={spanColor} />);
   }
   const levante = [];
   for (let index = 0; index < playing.levante; index++) {
-    levante.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.levante) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'ventus';
+        break;
+    }
+    levante.push(<span key={index} className={spanColor} />);
   }
   const ataque = [];
   for (let index = 0; index < playing.ataque; index++) {
-    ataque.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.ataque) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'ventus';
+        break;
+    }
+    ataque.push(<span key={index} className={spanColor} />);
   }
   const bloque = [];
   for (let index = 0; index < playing.bloque; index++) {
-    bloque.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.bloque) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'ventus';
+        break;
+    }
+    bloque.push(<span key={index} className={spanColor} />);
   }
   const defensa = [];
   for (let index = 0; index < playing.defensa; index++) {
-    defensa.push(<span key={index} />);
+    let spanColor = 'patino';
+    switch (playing.defensa) {
+      case 1:
+      case 2:
+        spanColor = 'platino';
+        break;
+      case 3:
+      case 4:
+        spanColor = 'platino-oro';
+        break;
+      case 5:
+      case 6:
+        spanColor = 'oro';
+        break;
+      case 7:
+      case 8:
+        spanColor = 'oro-elit';
+        break;
+      case 9:
+      case 10:
+        spanColor = 'elit';
+        break;
+
+      default:
+        spanColor = 'ventus';
+        break;
+    }
+    defensa.push(<span key={index} className={spanColor} />);
   }
 
   return hasPlaying ? (

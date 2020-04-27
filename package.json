@@ -5,7 +5,7 @@
   "engines": {
     "node": "12.16.2"
   },
-  "main": "src/server/index.js",
+  "main": "index.js",
   "scripts": {
     "start:dev": "cross-env DEBUG=app:* && nodemon src/server/index.js",
     "start": "node src/server/index.js",
