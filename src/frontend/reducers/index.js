@@ -2,33 +2,23 @@ const reducer = (state, action) => {
   const exists = state.favorites.find((item) => item.id === action.payload.id);
   switch (action.type) {
     case 'SET_FAVORITE':
-      return exists ?
-        state :
-        {
-          ...state,
-          favorites: [...state.favorites, action.payload],
-        };
+      return exists
+        ? state
+        : {
+            ...state,
+            favorites: [...state.favorites, action.payload],
+          };
 
     case 'DELETE_FAVORITE':
       return {
         ...state,
         favorites: state.favorites.filter(
-          (items) => items.id !== action.payload,
+          (items) => items.id !== action.payload
         ),
       };
 
     case 'LOGIN_REQUEST':
-      return {
-        ...state,
-        user: action.payload,
-      };
-
     case 'LOGOUT_REQUEST':
-      return {
-        ...state,
-        user: action.payload,
-      };
-
     case 'REGISTER_REQUEST':
       return {
         ...state,
@@ -51,12 +41,15 @@ const reducer = (state, action) => {
       };
 
     case 'SEARCH_REQUEST':
-      if (action.payload === '' || !action.payload) return { ...state, search: [] };
+      if (action.payload === '' || !action.payload)
+        return { ...state, search: [] };
       return {
         ...state,
         search: state.female
           .concat(state.male)
-          .filter((item) => item.name.toLowerCase().includes(action.payload.toLowerCase())),
+          .filter((item) =>
+            item.name.toLowerCase().includes(action.payload.toLowerCase())
+          ),
       };
 
     default:
