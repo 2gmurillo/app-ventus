@@ -106,7 +106,9 @@ const renderApp = async (req, res) => {
       headers: { Authorization: `Bearer ${token}` },
       method: 'get',
     });
-    playerList = playerList.data.data;
+    playerList = playerList.data.data.sort(function () {
+      return Math.random() - 0.5;
+    });
     let user = {};
     if (email || name || id) {
       user = {
