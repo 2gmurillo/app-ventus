@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import className from 'classname';
 import { searchRequest } from '../actions/index';
 
-const Search = ({ isHome }) => {
+const Search = (props) => {
+  const { isHome } = props;
   const inputStyle = className('search__input', {
     isHome,
   });
@@ -12,7 +13,7 @@ const Search = ({ isHome }) => {
   searchRequest('');
 
   const handleChange = (e) => {
-    searchRequest(e.target.value);
+    props.searchRequest(e.target.value);
   };
 
   return (
@@ -35,6 +36,7 @@ const mapDispatchToProps = {
 
 Search.propTypes = {
   isHome: PropTypes.bool,
+  searchRequest: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(Search);
