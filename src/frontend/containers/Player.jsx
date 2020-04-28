@@ -13,7 +13,7 @@ const Player = (props) => {
   }, []);
 
   const saque = [];
-  for (let index = 0; index < playing.saque; index++) {
+  for (let index = 0; index < playing.saque; index += 1) {
     let spanColor = 'patino';
     switch (playing.saque) {
       case 1:
@@ -44,7 +44,7 @@ const Player = (props) => {
     saque.push(<span key={index} className={spanColor} />);
   }
   const rece = [];
-  for (let index = 0; index < playing.rece; index++) {
+  for (let index = 0; index < playing.rece; index += 1) {
     let spanColor = 'patino';
     switch (playing.rece) {
       case 1:
@@ -75,7 +75,7 @@ const Player = (props) => {
     rece.push(<span key={index} className={spanColor} />);
   }
   const levante = [];
-  for (let index = 0; index < playing.levante; index++) {
+  for (let index = 0; index < playing.levante; index += 1) {
     let spanColor = 'patino';
     switch (playing.levante) {
       case 1:
@@ -106,7 +106,7 @@ const Player = (props) => {
     levante.push(<span key={index} className={spanColor} />);
   }
   const ataque = [];
-  for (let index = 0; index < playing.ataque; index++) {
+  for (let index = 0; index < playing.ataque; index += 1) {
     let spanColor = 'patino';
     switch (playing.ataque) {
       case 1:
@@ -137,7 +137,7 @@ const Player = (props) => {
     ataque.push(<span key={index} className={spanColor} />);
   }
   const bloque = [];
-  for (let index = 0; index < playing.bloque; index++) {
+  for (let index = 0; index < playing.bloque; index += 1) {
     let spanColor = 'patino';
     switch (playing.bloque) {
       case 1:
@@ -168,7 +168,7 @@ const Player = (props) => {
     bloque.push(<span key={index} className={spanColor} />);
   }
   const defensa = [];
-  for (let index = 0; index < playing.defensa; index++) {
+  for (let index = 0; index < playing.defensa; index += 1) {
     let spanColor = 'patino';
     switch (playing.defensa) {
       case 1:

@@ -6,9 +6,9 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 
 const Home = ({ favorites, female, male, search }) => {
-  let myFavorites,
-    femalePlayers,
-    malePlayers = null;
+  let myFavorites = null;
+  let femalePlayers = null;
+  let malePlayers = null;
 
   if (search.length <= 0) {
     myFavorites = favorites.length > 0 && (
@@ -21,7 +21,7 @@ const Home = ({ favorites, female, male, search }) => {
             position={item.position}
             height={item.height}
             cover={item.cover}
-            isList={true}
+            isList
           />
         ))}
       </Carousel>

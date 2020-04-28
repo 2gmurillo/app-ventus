@@ -19,6 +19,7 @@ import Layout from '../frontend/components/Layout';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import getManifest from './getManifest';
 import stateDefault from '../frontend/initialState';
+
 import icon from '../frontend/assets/static/ventus.png';
 
 dotenv.config();
@@ -38,23 +39,23 @@ app.use(express.static(`${__dirname}/public`));
 require('./utils/auth/strategies/basic');
 
 if (NODE_ENV === 'development') {
-  console.log(`Loading ${NODE_ENV} configuration`);
+  console.log('Loading dev config');
   const webpackConfig = require('../../webpack.config');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(webpackConfig);
   const serverConfig = {
-    // contentBase: `http://localhost${PORT}`,
+    contentBase: `http://localhost${PORT}`,
     port: PORT,
-    // publicPath: webpackConfig.output.publicPath,
+    publicPath: webpackConfig.output.publicPath,
     hot: true,
-    // historyApiFallback: true,
-    // stats: { colors: true },
+    historyApiFallback: true,
+    stats: { colors: true },
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
 } else {
-  console.log(`Loading ${NODE_ENV} configuration`);
+  console.log(`Loading ${NODE_ENV} config`);
   app.use((req, res, next) => {
     req.hashManifest = getManifest();
     next();
@@ -236,6 +237,7 @@ app.post('/players', async function (req, res, next) {
 
 app.get('*', renderApp);
 
-app.listen(PORT, function () {
-  console.log(`${NODE_ENV} server running on http://localhost:${PORT}`);
+app.listen(PORT, (err) => {
+  if (err) console.log(err);
+  else console.log(`${NODE_ENV} server running on port ${PORT}`);
 });

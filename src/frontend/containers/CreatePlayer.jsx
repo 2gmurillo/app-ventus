@@ -106,7 +106,7 @@ const CreatePlayer = (props) => {
 };
 
 const conFormik = withFormik({
-  mapPropsToValues(props) {
+  mapPropsToValues() {
     return {
       cover: '',
       name: '',
