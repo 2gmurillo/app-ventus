@@ -10,7 +10,7 @@ const Search = (props) => {
     isHome,
   });
 
-  searchRequest('');
+  props.searchRequest('');
 
   const handleChange = (e) => {
     props.searchRequest(e.target.value);
