@@ -25,10 +25,10 @@
       img {
         width: 100%;
         object-fit: cover;
+        animation-name: enfocar;
+        animation-duration: 2s;
       }
       img:hover {
-        animation-name: parpadear;
-        animation-duration: 300ms;
         cursor: pointer;
       }
     }
@@ -44,40 +44,65 @@
       justify-content: space-between;
       text-align: center;
       margin: 20px 0 10px;
-      .player__skills--attibute {
+      .player__skills--attribute {
         display: flex;
         flex-direction: column-reverse;
         cursor: pointer;
-        span {
-          display: block;
-          border-radius: 5px;
-          width: 35px;
-          height: 15px;
-          margin-bottom: 8px;
-        }
-        span:hover {
-          animation-name: parpadear;
-          animation-duration: 300ms;
-        }
-        .platino {
-          background-color: rgba($color: #763c28, $alpha: 0.5);
-        }
-        .platino-oro {
-          background-color: rgba($color: #763c28, $alpha: 1);
-        }
-        .oro {
-          background-color: rgba($color: #8a9597, $alpha: 1);
-        }
-        .oro-elit {
-          background-color: rgba($color: #ffbf00, $alpha: 0.5);
-        }
-        .elit {
-          background-color: rgba($color: #ffbf00, $alpha: 1);
+        div {
+          overflow: hidden;
+          position: relative;
+          span {
+            display: block;
+            border-radius: 5px;
+            width: 35px;
+            height: 15px;
+            margin-top: 8px;
+          }
+          // span:first-child {
+          //   margin-top: 0;
+          // }
+          .platino {
+            background-color: rgba($color: #763c28, $alpha: 0.5);
+          }
+          .platino-oro {
+            background-color: rgba($color: #763c28, $alpha: 1);
+          }
+          .oro {
+            background-color: rgba($color: #8a9597, $alpha: 1);
+          }
+          .oro-elit {
+            background-color: rgba($color: #ffbf00, $alpha: 0.5);
+          }
+          .elit {
+            background-color: rgba($color: #ffbf00, $alpha: 1);
+          }
         }
       }
     }
   }
   .button {
     width: 200px;
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-timing-function: steps(9);
+}
+@keyframes fadeInUp {
+  0% {
+    padding-top: 212px;
+  }
+  100% {
+    padding-top: 5px;
+  }
+}
+@keyframes enfocar {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: initial;
   }
 }

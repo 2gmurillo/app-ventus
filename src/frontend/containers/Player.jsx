@@ -207,29 +207,29 @@ const Player = (props) => {
           <img src={playing.cover} alt='' />
         </div>
         <div className='player__skills'>
-          <div id='saque' className='player__skills--attibute'>
+          <div id='saque' className='player__skills--attribute fadeInUp'>
             <p>Saq</p>
-            {saque}
+            <div>{saque}</div>
           </div>
-          <div id='rece' className='player__skills--attibute'>
+          <div id='rece' className='player__skills--attribute fadeInUp'>
             <p>Rec</p>
-            {rece}
+            <div>{rece}</div>
           </div>
-          <div id='levante' className='player__skills--attibute'>
+          <div id='levante' className='player__skills--attribute fadeInUp'>
             <p>Lev</p>
-            {levante}
+            <div>{levante}</div>
           </div>
-          <div id='ataque' className='player__skills--attibute'>
+          <div id='ataque' className='player__skills--attribute fadeInUp'>
             <p>Ata</p>
-            {ataque}
+            <div>{ataque}</div>
           </div>
-          <div id='bloque' className='player__skills--attibute'>
+          <div id='bloque' className='player__skills--attribute fadeInUp'>
             <p>Blo</p>
-            {bloque}
+            <div>{bloque}</div>
           </div>
-          <div id='defensa' className='player__skills--attibute'>
+          <div id='defensa' className='player__skills--attribute fadeInUp'>
             <p>Def</p>
-            {defensa}
+            <div>{defensa}</div>
           </div>
         </div>
       </div>
