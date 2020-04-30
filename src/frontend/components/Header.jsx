@@ -45,11 +45,6 @@ const Header = (props) => {
                 Cerrar sesión
               </Link>
             </li>
-            <li>
-              <button type='button' className='exit'>
-                X
-              </button>
-            </li>
           </ul>
         ) : (
           <ul className='header__menu--list'>
@@ -63,13 +58,13 @@ const Header = (props) => {
                 Score-app
               </Link>
             </li>
-            <li>
-              <button type='button' className='exit'>
-                X
-              </button>
-            </li>
           </ul>
         )}
+        <div className='exit'>
+          <button type='button' className='exit__button'>
+            X
+          </button>
+        </div>
       </div>
     </header>
   );
