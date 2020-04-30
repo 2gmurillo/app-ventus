@@ -1,6 +1,5 @@
 .player {
   grid-area: main;
-  min-height: calc(100vh - 152px);
   @include center-col;
 }
 .player {

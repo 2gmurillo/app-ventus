@@ -1,4 +1,13 @@
 @media (min-width: 450px) {
+  .home,
+  .createPlayer,
+  .login,
+  .notFound,
+  .player,
+  .register,
+  .score-app {
+    min-height: calc(100vh - 216px);
+  }
   .header {
     height: 100px;
   }
@@ -44,6 +53,15 @@
   }
 }
 @media (min-width: 680px) {
+  .home,
+  .createPlayer,
+  .login,
+  .notFound,
+  .player,
+  .register,
+  .score-app {
+    min-height: calc(100vh - 152px);
+  }
   .footer {
     flex-direction: row;
     justify-content: space-between;

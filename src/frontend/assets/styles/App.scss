@@ -42,7 +42,15 @@ a {
 }
 .home {
   grid-area: main;
-  min-height: calc(100vh - 152px);
+}
+.home,
+.createPlayer,
+.login,
+.notFound,
+.player,
+.register,
+.score-app {
+  min-height: calc(100vh - 166px);
 }
 @import '../styles/components/Header.scss';
 @import '../styles/components/Search.scss';
