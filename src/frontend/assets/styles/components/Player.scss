@@ -19,7 +19,7 @@
       background-color: rgba($color: #000000, $alpha: 0.5);
       width: 280px;
       height: 280px;
-      border-radius: 20px;
+      border-radius: 10px;
       overflow: hidden;
       @include center-col;
       img {
@@ -87,7 +87,7 @@
 
 .fadeInUp {
   animation-name: fadeInUp;
-  animation-duration: 1s;
+  animation-duration: 500ms;
   animation-timing-function: steps(9);
 }
 @keyframes fadeInUp {

@@ -1,17 +1,14 @@
 @media (min-width: 450px) {
   .header {
     height: 100px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .header__menu {
-    justify-content: flex-end;
-    position: relative;
   }
   .header__menu--list {
-    position: absolute;
-    top: 70px;
-    right: 0;
+    font-size: 18px;
+    top: 72px;
+  }
+  .header__logo--p,
+  .header__menu--profile {
+    font-size: 40px;
   }
 }
 @media (min-width: 640px) {
