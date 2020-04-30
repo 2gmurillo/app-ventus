@@ -33,6 +33,8 @@
     right: 0;
     top: 80px;
   }
+  .header__menu:active .exit,
+  .header__menu--list:hover ~ .exit,
   .exit {
     display: none;
   }

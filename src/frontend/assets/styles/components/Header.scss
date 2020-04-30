@@ -65,18 +65,17 @@
     border-radius: 50%;
   }
 }
-
+.exit {
+  display: none;
+}
 .header__menu:active .exit,
 .header__menu--list:hover ~ .exit {
   width: 100vw;
   position: fixed;
-  top: 80vh;
+  top: 65vh;
   left: 0;
   z-index: 200;
   @include center-row;
-}
-.exit {
-  display: none;
 }
 .exit__button {
   width: 50px;
