@@ -4,13 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .header__logo {
   @include center-row;
   height: inherit;
 }
 .header__logo--img {
-  height: 70%;
+  height: 60%;
 }
 .header__logo--p {
   font-size: 24px;
@@ -21,7 +22,6 @@
   @include center-row;
   cursor: pointer;
   justify-content: flex-end;
-  position: relative;
 }
 .header__menu--profile {
   height: 100%;
@@ -31,18 +31,23 @@
   font-size: 24px;
 }
 .header__menu--list {
-  font-size: 12px;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  width: 100vw;
+  height: 100vh;
+  font-size: 30px;
   display: none;
   list-style: none;
-  position: absolute;
-  top: 42px;
-  right: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .header__menu:hover .header__menu--list,
 .header__menu--list:hover {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
 }
 .header__menu--list li:hover a {
   text-decoration: underline;
@@ -59,4 +64,17 @@
     height: 50px;
     border-radius: 50%;
   }
+}
+.exit {
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  color: #f2f2f2;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+}
+.exit {
+  pointer-events: auto;
 }

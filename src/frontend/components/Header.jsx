@@ -45,6 +45,11 @@ const Header = (props) => {
                 Cerrar sesión
               </Link>
             </li>
+            <li>
+              <button type='button' className='exit'>
+                X
+              </button>
+            </li>
           </ul>
         ) : (
           <ul className='header__menu--list'>
@@ -57,6 +62,11 @@ const Header = (props) => {
               <Link className='link' to='/score-app'>
                 Score-app
               </Link>
+            </li>
+            <li>
+              <button type='button' className='exit'>
+                X
+              </button>
             </li>
           </ul>
         )}

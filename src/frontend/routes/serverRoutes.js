@@ -26,7 +26,7 @@ const serverRoutes = (isLogged) => {
     {
       exact: true,
       path: '/login',
-      component: Login,
+      component: isLogged ? Home : Login,
     },
     {
       exact: true,
